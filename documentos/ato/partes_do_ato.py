@@ -15,6 +15,8 @@ def epigrafe_ato(informacoes_do_formulario): # setor_responsavel, numero_ato
         return epigrafe['html'].format(epigrafe['txt_dgp_dap'].format(numero_do_ato))
     elif informacoes_do_formulario['setor_responsavel'] == "REITORIA":
         return epigrafe['html'].format(epigrafe['txt_reitoria'].format(numero_do_ato))
+    else:
+        return epigrafe['html'].format(epigrafe['txt_erro'])
     
 
 ###########################################################################################################################
