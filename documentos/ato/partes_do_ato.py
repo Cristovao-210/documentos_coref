@@ -1,5 +1,5 @@
 import streamlit as st
-from auxiliares.tags_html_atos import *
+from compor_arquivo_atos import *
 
 
 # A epígrafe é a parte do ato que o qualifica na ordem jurídica e o situa no tempo, por meio da
@@ -8,18 +8,13 @@ from auxiliares.tags_html_atos import *
 # TÍTULO
 def epigrafe_ato(informacoes_do_formulario): # setor_responsavel, numero_ato
 
+    numero_do_ato = informacoes_do_formulario['numero_ato']
     if informacoes_do_formulario['setor_responsavel'] == "DGP":
-        return f'''<p style="font-size:13pt;font-family:Calibri;text-align:center;text-transform:uppercase;word-wrap:normal;">
-                      ATO DO DECANATO DE GESTÃO DE PESSOAS Nº {informacoes_do_formulario['numero_ato']}
-	               </p>'''
+        return epigrafe['html'].format(epigrafe['txt_dgp'].format(numero_do_ato))
     elif informacoes_do_formulario['setor_responsavel'] == "DGP/DAP":
-        return f'''<p style="font-size:13pt;font-family:Calibri;text-align:center;text-transform:uppercase;word-wrap:normal;">
-                      ATO DA DIRETORIA DE ADMINISTRAÇÃO DE PESSOAS Nº {informacoes_do_formulario['numero_ato']}
-                   </p>'''
+        return epigrafe['html'].format(epigrafe['txt_dgp_dap'].format(numero_do_ato))
     elif informacoes_do_formulario['setor_responsavel'] == "REITORIA":
-         return f'''<p style="font-size:13pt;font-family:Calibri;text-align:center;text-transform:uppercase;word-wrap:normal;">
-                      ATO DA REITORIA Nº {informacoes_do_formulario['numero_ato']}
-                    </p>'''
+        return epigrafe['html'].format(epigrafe['txt_reitoria'].format(numero_do_ato))
     
 
 ###########################################################################################################################
