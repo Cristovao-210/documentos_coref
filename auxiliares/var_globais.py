@@ -18,15 +18,23 @@ lista_de_funcoes = ["", "FCC", "FUNÇÃO NÃO REMUNERADA", "CD-01", "CD-02", "CD
 
 ###########################################################################################################################
 
-decana_titular = "Maria do Socorro Mendes Gomes<br>Decana de Gestão de Pessoas"
+dirigentes = {'dgp':
+              {'decana': 
+               {'titular': "Maria do Socorro Mendes Gomes<br>Decana de Gestão de Pessoas", 
+                'em_exercicio': "Sheila Perla Maria de Andrade da Silva<br>Decana de Gestão de Pessoas em exercício"
+                },
+                'dap': 
+                {'titular':'Willian Aparecido Rodrigues Soares<br>Diretor de Administração de Pessoas',
+                 'em_exercicio': 'nome do substituto<br>Diretor de Administração de Pessoas em exercício'
+                 }
+              },
+              'reitoria':
+              {
+                'titular':'<br>',
+                'em_exercicio': 'nome do substituto<br> em exercício'
+              }
 
-decana_em_exercicio = "Sheila Perla Maria de Andrade da Silva<br>Decana de Gestão de Pessoas em exercício"
-
-diretor_da_dap = ""
-
-reitor = ""
-
-vice_reitor = ""
+}
 
 
 
