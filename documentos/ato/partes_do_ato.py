@@ -25,26 +25,29 @@ def epigrafe_ato(informacoes_do_formulario): # setor_responsavel, numero_ato
 # TEXTO ALINHADO A DIREITA ABAIXO DO TÍTULO
 def ementa_ato(informacoes_do_formulario):
 
+    # 0-categoria_cargo (docente/servidor) 
+    categoria_funcional = informacoes_do_formulario['categoria_funcional']
+    # 1-nome
+    nome_servidor = informacoes_do_formulario['nome_servidor']
+    # 2-nome_COORDENAÇÃO/DIREÇÃO, 
+    nome_da_funcao = informacoes_do_formulario['nome_da_funcao']
+    # 3- cd,fg,fcc
+    tipo_de_funcao = informacoes_do_formulario['tipo_de_funcao'] 
+    # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
+    cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] 
+
     # CDS
     if informacoes_do_formulario['tipo_de_ato'] == "Nomeação de CD":
-       return f'''{ementa_abre_tag} 
-
-                  {ementa_fecha_tag}'''
+       return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['nomeacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     
     elif informacoes_do_formulario['tipo_de_ato'] == "Exoneração de CD":
-        return f'''{ementa_abre_tag} 
-       
-                   {ementa_fecha_tag}'''
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['exoneracao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     
     elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de CD":
-        return f'''{ementa_abre_tag} 
-       
-                   {ementa_fecha_tag}'''
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['substituicao'].format(categoria_funcional, nome_servidor, cargo_a_ser_substituido, tipo_de_funcao))
     
     elif informacoes_do_formulario['tipo_de_ato'] == "Recondução de CD":
-        return f'''{ementa_abre_tag} 
-       
-                   {ementa_fecha_tag}'''
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['reconducao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     
     # FGS    
     elif informacoes_do_formulario['tipo_de_ato'] == "Designação de FG":
