@@ -19,7 +19,7 @@ lista_de_funcoes = ["", "FCC", "FUNÇÃO NÃO REMUNERADA", "CD-01", "CD-02", "CD
 ###########################################################################################################################
 
 dirigentes = {'dgp':
-              {'decana': 
+              {'decanato': 
                {'titular': "Maria do Socorro Mendes Gomes<br>Decana de Gestão de Pessoas", 
                 'em_exercicio': "Sheila Perla Maria de Andrade da Silva<br>Decana de Gestão de Pessoas em exercício"
                 },

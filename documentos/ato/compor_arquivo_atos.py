@@ -1,12 +1,11 @@
 
+################################################### ATOS DE FUNÇÃO ############################################################
 
-
-###########################################################################################################################
 # BASE DO ATO
 
 documento_base = {}
 
-###########################################################################################################################
+#==============================================================================================================================
 # EPIGRAFE
 epigrafe = {
             
@@ -19,7 +18,7 @@ epigrafe = {
 }
 #teste_epigaraf = epigrafe['html'].format(epigrafe['txt_reitoria'].format('2012/2023'))
 
-###########################################################################################################################
+#==============================================================================================================================
 # EMENTA
 
 ementa = {
@@ -38,23 +37,24 @@ ementa = {
             </tbody>
         </table> ''',
     'txt_cds': {    
-        # 0-categoria_cargo (docente/servidor) 1-nome, 2-nome_funcao, 3-numero_cd
-        'nomeacao': 'Nomeia {0} {1} para exercer a função de {2} ({3}).', 
-        # 0-categoria_cargo (docente/servidor) 1-nome, 2-nome_funcao, 3-numero_cd
-        'exoneracao': 'Exonera {0} {1} da função de {2} ({3}).', 
         # 0-categoria_cargo (docente/servidor) 1-nome, 2-nome_COORDENAÇÃO/DIREÇÃO, 3-numero_cd
-        'substituicao':'Nomeia {0} {1} para substituir a {2} ({3}).', 
+        'nomeacao': 'Nomeia {0} {1} para exercer a função de {2} ({3}).', 
+        'exoneracao': 'Exonera {0} {1} da função de {2} ({3}).', 
+        'substituicao':'Nomeia {0} {1} para substituir a {2} ({3}).', #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
         # 0-categoria_cargo (docente/servidor) 1-nome, 2-nome_funcao
         'reconducao':'Reconduz {0} {1} para exercer a função de {2}.' 
     },
     'txt_fgs': {
-        'designacao': '',
-        'dispensa': '',
-        'substituicao': ''
+        # 0-categoria_cargo (docente/servidor) 1-nome, 2-nome_funcao, 3-numero_fg
+        'designacao': 'Designa {0} {1} para exercer a função de {2} ({3}).',
+        'dispensa': 'Dispensa {0} {1} da função de {2} ({3}).',
+        'substituicao': 'Designa {0} {1} para substituir a {2} ({3}).' #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
     },
     'txt_fccs': {
-        'designacao': '',
-        'dispensa': '',
+        # 0-Genero do Cargo (o Professor do Magistério Superior/a Professora do Magistério Superior) 
+        # 1-nome, 2-(Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
+        'designacao': 'Designa {0} {1} para exercer a função de {2} em {3} (FCC).',
+        'dispensa': 'Dispensa {0} {1} da função de {2} em {3} (FCC).',
         'substituicao': '',
         'nao_remunerada': ''
     },
@@ -64,13 +64,13 @@ ementa = {
 #teste_ementa = ementa['html'].format(ementa['txt_cds']['nomeacao'].format('o servidor', 'Márcio Cristóvão', 'Coordenador do tempo', 'CD-04'))
 
 
-###########################################################################################################################
+#==============================================================================================================================
 
-###########################################################################################################################
+#==============================================================================================================================
 
-###########################################################################################################################
+#==============================================================================================================================
 
-###########################################################################################################################
+#==============================================================================================================================
 
 
 
