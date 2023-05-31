@@ -65,9 +65,9 @@ ementa = {
         'txt_erro': 'ERRO: Nenhum Tipo de ato selecionado.'
     }    
 }
-teste_ementa = ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['reconducao'].format('o servidor', 'Márcio Cristóvão', 'Coordenador do tempo', 'CD-04'))
-
-
+teste_ementa = ementa['funcao']['html'].format(ementa['funcao']['txt_erro'])
+# ementa['funcao']['html'].format(ementa['funcao']['txt_fgs']['substituicao'].format('a Docente', 'Maria Lúcia', 'Menina linda', 'FG-03'))
+ 
 #==============================================================================================================================
 
 #==============================================================================================================================

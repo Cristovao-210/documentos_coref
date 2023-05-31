@@ -25,16 +25,17 @@ def epigrafe_ato(informacoes_do_formulario): # setor_responsavel, numero_ato
 # TEXTO ALINHADO A DIREITA ABAIXO DO TÍTULO
 def ementa_ato(informacoes_do_formulario):
 
-    # 0-categoria_cargo (docente/servidor) 
+
+    # 0-categoria_cargo (o(a) Docente/Servidor(a)/o Professor do Magistério Superior/a Professora do Magistério Superior) 
     categoria_funcional = informacoes_do_formulario['categoria_funcional']
     # 1-nome
     nome_servidor = informacoes_do_formulario['nome_servidor']
-    # 2-nome_COORDENAÇÃO/DIREÇÃO, 
+    # 2-nome_COORDENAÇÃO/DIREÇÃO, (Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
     nome_da_funcao = informacoes_do_formulario['nome_da_funcao']
-    # 3- cd,fg,fcc
+    # 3- cd-1 a 4,fg-1 a 3,fcc
     tipo_de_funcao = informacoes_do_formulario['tipo_de_funcao'] 
     # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
-    cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] 
+    cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
 
     # CDS
     if informacoes_do_formulario['tipo_de_ato'] == "Nomeação de CD":
@@ -47,57 +48,37 @@ def ementa_ato(informacoes_do_formulario):
         return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['substituicao'].format(categoria_funcional, nome_servidor, cargo_a_ser_substituido, tipo_de_funcao))
     
     elif informacoes_do_formulario['tipo_de_ato'] == "Recondução de CD":
-        return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['reconducao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['reconducao'].format(categoria_funcional, nome_servidor, nome_da_funcao))
+               
     
     # FGS    
     elif informacoes_do_formulario['tipo_de_ato'] == "Designação de FG":
-        return f'''{ementa_abre_tag} 
-       
-                   {ementa_fecha_tag}'''
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_fgs']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     
     elif informacoes_do_formulario['tipo_de_ato'] == "Dispensa de FG":
-        return f'''{ementa_abre_tag} 
-       
-                   {ementa_fecha_tag}'''
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_fgs']['dispensa'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     
     elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de FG":
-       return f'''{ementa_abre_tag} 
-       
-                  {ementa_fecha_tag}'''
+       return ementa['funcao']['html'].format(ementa['funcao']['txt_fgs']['substituicao'].format(categoria_funcional, nome_servidor, cargo_a_ser_substituido, tipo_de_funcao))
     
     #FCCS
     elif informacoes_do_formulario['tipo_de_ato'] == "Designação de FCC":
-        return f'''{ementa_abre_tag} 
-       
-                   {ementa_fecha_tag}'''
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_fccs']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     
     elif informacoes_do_formulario['tipo_de_ato'] == "Dispensa de FCC":
-        return f'''{ementa_abre_tag} 
-       
-                   {ementa_fecha_tag}'''
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_fccs']['dispensa'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     
     elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de FCC":
-        return f'''{ementa_abre_tag} 
-       
-                   {ementa_fecha_tag}'''
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_fccs']['substituicao'].format(categoria_funcional, nome_servidor, cargo_a_ser_substituido, tipo_de_funcao))
     
     elif informacoes_do_formulario['tipo_de_ato'] == "FCC não remunerada":
-        return f'''{ementa_abre_tag} 
-       
-                   {ementa_fecha_tag}'''
+        if informacoes_do_formulario['tipo_de_ato']['tipo_nao_remunerada'] == 'Designação':
+            return ementa['funcao']['html'].format(ementa['funcao']['txt_fccs']['nao_remunerada']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
+        else:
+            return ementa['funcao']['html'].format(ementa['funcao']['txt_fccs']['nao_remunerada']['dispensa'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     
     else:
-        return f'''{ementa_abre_tag} 
-                    ERRO: Nenhum Tipo de ato selecionado.
-                   {ementa_fecha_tag}'''
-
-
-
-
-
-
-
-
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_erro'])
 
 
 #############################################################################################################################
