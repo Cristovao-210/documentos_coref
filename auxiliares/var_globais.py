@@ -13,6 +13,8 @@ lista_de_cds = ["","CD-01", "CD-02", "CD-03", "CD-04"]
 
 lista_de_fgs = ["","FG-01", "FG-02", "FG-03"]
 
+lista_finalidades_do_ato = ["", "Manutenção de Funções"]
+
 lista_de_funcoes = ["", "FCC", "FUNÇÃO NÃO REMUNERADA", "CD-01", "CD-02", "CD-03", "CD-04", "FG-01", "FG-02", "FG-03"] # FORMULÁRIO
 
 
