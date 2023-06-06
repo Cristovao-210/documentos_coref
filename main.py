@@ -19,7 +19,6 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                     formulario_gerar_ato(dados_do_formulario)
 
 
-
-
+# verificando salvamento das informações
 st.write(dados_do_formulario)
     
