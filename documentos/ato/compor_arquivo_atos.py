@@ -16,7 +16,7 @@ epigrafe = {
     'txt_erro': 'ERRO: NENHUM SETOR RESPONSÁVEL SELECIONADO'
 
 }
-teste_epigaraf = epigrafe['html'].format(epigrafe['txt_reitoria'].format('2012/2023'))
+#teste_epigaraf = epigrafe['html'].format(epigrafe['txt_reitoria'].format('2012/2023'))
 
 #==============================================================================================================================
 # EMENTA
@@ -65,7 +65,7 @@ ementa = {
         'txt_erro': 'ERRO: Nenhum Tipo de ato selecionado.'
     }    
 }
-teste_ementa = ementa['funcao']['html'].format(ementa['funcao']['txt_erro'])
+#teste_ementa = ementa['funcao']['html'].format(ementa['funcao']['txt_erro'])
 # ementa['funcao']['html'].format(ementa['funcao']['txt_fgs']['substituicao'].format('a Docente', 'Maria Lúcia', 'Menina linda', 'FG-03'))
  
 #==============================================================================================================================
@@ -79,8 +79,8 @@ teste_ementa = ementa['funcao']['html'].format(ementa['funcao']['txt_erro'])
 
 
 
-with open("file.html", "w", encoding='utf-8') as f:
-    f.write(f'{teste_epigaraf} {teste_ementa}')
+# with open("file.html", "w", encoding='utf-8') as f:
+#     f.write(f'{teste_epigaraf} {teste_ementa}')
 
 
 

@@ -15,8 +15,17 @@ lista_de_fgs = ["","FG-01", "FG-02", "FG-03"]
 
 lista_finalidades_do_ato = ["", "Manutenção de Funções"]
 
-lista_de_funcoes = ["", "FCC", "FUNÇÃO NÃO REMUNERADA", "CD-01", "CD-02", "CD-03", "CD-04", "FG-01", "FG-02", "FG-03"] # FORMULÁRIO
+lista_de_nome_funcoes = ["",
+                         "Coordenador(a) de Pós-graduação", "Coordenador(a) de Graduação",
+                         "Diretor(a)", "Vice-diretor(a)",
+                         "Secretário(a)", "Decano(a)", "Prefeito"]
 
+lista_de_tipos_funcoes = ["", "FCC", "FUNÇÃO NÃO REMUNERADA", "CD-01", "CD-02", "CD-03", "CD-04", "FG-01", "FG-02", "FG-03"] # FORMULÁRIO
+
+lista_de_categorias_funcionais = ["", 
+                                  "o servidor", "a servidora",
+                                  "o docente", "a docente",
+                                  "o Professor do Magistério Superior", "a Professora do Magistério Superior",]
 
 ###########################################################################################################################
 

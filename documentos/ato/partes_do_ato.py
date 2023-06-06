@@ -1,5 +1,5 @@
 import streamlit as st
-from compor_arquivo_atos import *
+from  documentos.ato.compor_arquivo_atos import *
 
 
 # A epígrafe é a parte do ato que o qualifica na ordem jurídica e o situa no tempo, por meio da

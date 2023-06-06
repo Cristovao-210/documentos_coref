@@ -1,5 +1,6 @@
 import streamlit as st
 from auxiliares.var_globais import *
+from formularios.ato.formulario_atos import *
 
 st.subheader("GERADOR DE DOCUMENTOS OFICIAIS")
 
@@ -14,6 +15,9 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
             dados_do_formulario['finalidade_do_ato'] = st.sidebar.selectbox("Finalidade do ato", lista_finalidades_do_ato)
             if dados_do_formulario['finalidade_do_ato'] == "Manutenção de Funções":
                 dados_do_formulario['tipo_de_ato'] = st.sidebar.selectbox("Informe o tipo de ato", lista_de_tipos_de_ato)
+                if dados_do_formulario["tipo_de_ato"] != "":
+                    formulario_gerar_ato(dados_do_formulario)
+
 
 
 
