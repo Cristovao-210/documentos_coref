@@ -85,7 +85,7 @@ def preambulo_ato(informacoes_do_formulario): # setor_responsavel, numero_do_sei
 def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
     # tipo_ato = Designação/Nomeação, Dispensa/Exoneração, Substituição
     # tipo_funcao = FCC, FG, CD
-    pass
+    return "AQUI FICARÁ O TEXTO DO ATO"
 
 
 #############################################################################################################################
@@ -94,5 +94,5 @@ def assinatura_ato(informacoes_do_formulario): # tipo_ato, titularidade
     #Reitoria
     #DGP
     #DGP/DAP
-    pass
+    return "AQUI FICARÁ A ASSINATURA<br>E AQUI FICARÁ A IDENTIFICAÇÃO DE QUEM ASSINOU"
 
