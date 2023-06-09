@@ -11,6 +11,7 @@ def formulario_gerar_ato(dados_do_formulario):
     with st.form('form_ato', clear_on_submit=True):
 
         dados_do_formulario['numero_ato'] = st.text_input('Informe o número do Ato')
+        dados_do_formulario['numero_do_sei'] = st.text_input('Informe o número do Processo SEI')
 
         # 0-categoria_cargo (o(a) Docente/Servidor(a)/o Professor do Magistério Superior/a Professora do Magistério Superior) 
         dados_do_formulario['categoria_funcional'] = st.selectbox("Catergoria Funcional", lista_de_categorias_funcionais)
