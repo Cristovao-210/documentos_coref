@@ -1,6 +1,5 @@
 import streamlit as st
 from auxiliares.var_globais import *
-
 from documentos.ato.base_do_ato import gerar_ato
 
 
