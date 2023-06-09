@@ -9,7 +9,7 @@ def gerar_ato(formulario):
     _preambulo_ = preambulo_ato(formulario)
     _texto_ato_ = texto_do_ato(formulario)
     _assinatura_ = assinatura_ato(formulario)
-    
+    # escrevendo partes no arquivo
     with open("file.html", "w", encoding='utf-8') as f:
         f.write('''
         <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
