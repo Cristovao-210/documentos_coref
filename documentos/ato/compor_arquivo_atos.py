@@ -89,13 +89,41 @@ preambulo = {
         'txt_reitoria': 'A REITORA DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições e considerando o constante no Processo nº {0},',
         'txt_erro': 'ERRO: Nenhum Tipo de Setor Responsável selecionado.'
     }    
-} # setor_responsavel, numero_do_sei #Reitoria #DGP  #DGP/DAP
+} 
     
     
    
 #==============================================================================================================================
+texto_ato = {
+
+        'funcao':{
+            'html': '''
+                 <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">
+                    {0}
+                </p> '''
+        }
+}
 
 #==============================================================================================================================
+dirigentes = {
+              'html':'<p style="font-size:12pt;font-family:Calibri;text-align:center;word-wrap:normal;margin:6pt;">{0}</p>',
+              'dgp':
+              {'decanato': 
+               {'titular': "Maria do Socorro Mendes Gomes<br>Decana de Gestão de Pessoas", 
+                'em_exercicio': "Sheila Perla Maria de Andrade da Silva<br>Decana de Gestão de Pessoas em exercício"
+                },
+                'dap': 
+                {'titular':'Willian Aparecido Rodrigues Soares<br>Diretor de Administração de Pessoas',
+                 'em_exercicio': 'nome do substituto<br>Diretor de Administração de Pessoas em exercício'
+                 }
+              },
+              'reitoria':
+              {
+                'titular': 'Prof ª Márcia Abrahão Moura<br>Reitora',
+                'em_exercicio': 'Prof. Enrique Huelva Unternbäumen<br>Vice-Reitor, no exercício da Reitoria'
+              }
+
+}
 
 #==============================================================================================================================
 

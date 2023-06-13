@@ -7,6 +7,7 @@ from documentos.ato.base_do_ato import gerar_ato
 def formulario_gerar_ato(dados_do_formulario):
 
     st.subheader(f"FORMULÁRIO PARA COMPOSIÇÃO DE DOCUMENTOS: {dados_do_formulario['documento_selecionado']}")
+    setor_responsavel = dados_do_formulario['setor_responsavel']
 
     with st.form('form_ato', clear_on_submit=True):
 
@@ -23,6 +24,16 @@ def formulario_gerar_ato(dados_do_formulario):
         dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", lista_de_tipos_funcoes)
         # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
         dados_do_formulario['cargo_a_ser_substituido'] = st.selectbox("Cargo a ser substituído", ("","em construção...")) # Concatenar com o nome da função]
+        # assinatura
+        if setor_responsavel == "DGP":
+            dados_do_formulario['dirigente_responsavel'] = st.radio("Assinatura:",("Decano(a) titular", "Decano(a) em exercício"))
+        elif setor_responsavel == "DGP/DAP":
+            dados_do_formulario['dirigente_responsavel'] = st.radio("Assinatura:",("Diretor(a) titular", "Diretor(a) em exercício"))
+        elif setor_responsavel == "REITORIA":
+            dados_do_formulario['dirigente_responsavel'] = st.radio("Assinatura:",("Reitor(a)", "Vice-Reitor(a)"))
+
+
+
 
 
 

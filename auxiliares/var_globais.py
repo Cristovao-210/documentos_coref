@@ -29,28 +29,6 @@ lista_de_categorias_funcionais = ["",
 
 ###########################################################################################################################
 
-dirigentes = {'dgp':
-              {'decanato': 
-               {'titular': "Maria do Socorro Mendes Gomes<br>Decana de Gestão de Pessoas", 
-                'em_exercicio': "Sheila Perla Maria de Andrade da Silva<br>Decana de Gestão de Pessoas em exercício"
-                },
-                'dap': 
-                {'titular':'Willian Aparecido Rodrigues Soares<br>Diretor de Administração de Pessoas',
-                 'em_exercicio': 'nome do substituto<br>Diretor de Administração de Pessoas em exercício'
-                 }
-              },
-              'reitoria':
-              {
-                'titular':'<br>',
-                'em_exercicio': 'nome do substituto<br> em exercício'
-              }
-
-}
-
-
-
-###########################################################################################################################
-
 # capturando ano
 data_atual = datetime.date.today()
 ano_atual = data_atual.year

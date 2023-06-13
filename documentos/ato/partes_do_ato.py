@@ -73,13 +73,25 @@ def preambulo_ato(informacoes_do_formulario): # setor_responsavel, numero_do_sei
 def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
     # tipo_ato = Designação/Nomeação, Dispensa/Exoneração, Substituição
     # tipo_funcao = FCC, FG, CD
-    return "AQUI FICARÁ O TEXTO DO ATO"
+    return texto_ato['funcao']['html'].format("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ullamcorper tellus et vestibulum ultricies. Fusce at efficitur sapien, vitae molestie erat. Nullam fermentum placerat viverra. Suspendisse potenti. Nam ut efficitur nisl. Ut nibh justo, sagittis in blandit non, consequat auctor ipsum.")
 
 #############################################################################################################################
 # QUEM VAI ASSINAR
 def assinatura_ato(informacoes_do_formulario): # tipo_ato, titularidade 
-    #Reitoria
-    #DGP
-    #DGP/DAP
-    return "AQUI FICARÁ A ASSINATURA<br>E AQUI FICARÁ A IDENTIFICAÇÃO DE QUEM ASSINOU"
+    
+    dirigente_responsavel = informacoes_do_formulario['dirigente_responsavel']
+    if dirigente_responsavel == "Decano(a) titular":
+        return dirigentes['html'].format(dirigentes['dgp']['decanato']['titular'])
+    elif dirigente_responsavel == "Decano(a) em exercício":
+        return dirigentes['html'].format(dirigentes['dgp']['decanato']['em_exercicio'])
+    elif dirigente_responsavel == "Diretor(a) titular":
+        return dirigentes['html'].format(dirigentes['dgp']['dap']['titular'])
+    elif dirigente_responsavel == "Diretor(a) em exercício":
+        return dirigentes['html'].format(dirigentes['dgp']['dap']['em_exercicio'])
+    elif dirigente_responsavel == "Reitor(a)":
+        return dirigentes['html'].format(dirigentes['reitoria']['titular'])
+    elif dirigente_responsavel == "Vice-Reitor(a)":
+        return dirigentes['html'].format(dirigentes['reitoria']['em_exercicio'])
+    else:
+        return dirigentes['html'].format('Nenhum dirigente selecionado')
 
