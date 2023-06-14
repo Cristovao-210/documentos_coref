@@ -22,7 +22,7 @@ def ementa_ato(informacoes_do_formulario):
     # 2-nome_COORDENAÇÃO/DIREÇÃO, (Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
     nome_da_funcao = informacoes_do_formulario['nome_da_funcao']
     # 3- cd-1 a 4,fg-1 a 3,fcc
-    tipo_de_funcao = informacoes_do_formulario['tipo_de_funcao'] 
+    tipo_de_funcao = informacoes_do_formulario['tipo_de_funcao']
     # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
     cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
     # CDS
@@ -70,10 +70,63 @@ def preambulo_ato(informacoes_do_formulario): # setor_responsavel, numero_do_sei
     
 #############################################################################################################################
 # TEXTO DO ATO 
+# def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
+#     # tipo_ato = Designação/Nomeação, Dispensa/Exoneração, Substituição
+#     # tipo_funcao = FCC, FG, CD
+#     return texto_ato['funcao']['html'].format("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ullamcorper tellus et vestibulum ultricies. Fusce at efficitur sapien, vitae molestie erat. Nullam fermentum placerat viverra. Suspendisse potenti. Nam ut efficitur nisl. Ut nibh justo, sagittis in blandit non, consequat auctor ipsum.")
+
 def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
-    # tipo_ato = Designação/Nomeação, Dispensa/Exoneração, Substituição
-    # tipo_funcao = FCC, FG, CD
-    return texto_ato['funcao']['html'].format("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ullamcorper tellus et vestibulum ultricies. Fusce at efficitur sapien, vitae molestie erat. Nullam fermentum placerat viverra. Suspendisse potenti. Nam ut efficitur nisl. Ut nibh justo, sagittis in blandit non, consequat auctor ipsum.")
+    # 0-categoria_cargo (o(a) Docente/Servidor(a)/o Professor do Magistério Superior/a Professora do Magistério Superior) 
+    categoria_funcional = informacoes_do_formulario['categoria_funcional']
+    # 1-nome
+    nome_servidor = informacoes_do_formulario['nome_servidor']
+    # 2-nome_COORDENAÇÃO/DIREÇÃO, (Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
+    nome_da_funcao = informacoes_do_formulario['nome_da_funcao']
+    # 3- cd-1 a 4,fg-1 a 3,fcc
+    tipo_de_funcao = informacoes_do_formulario['tipo_de_funcao']
+    # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
+    cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
+    # detalhe em nomeação de cd
+    genero = informacoes_do_formulario['genero']
+    ja_tem_funcao = ""
+    if genero == "Masculino":
+        ja_tem_funcao = ', dispensando-o da função que atualmente ocupa.'
+    elif genero == "Feminino":
+        ja_tem_funcao = ', dispensando-a da função que atualmente ocupa.'
+    else:
+        ja_tem_funcao = '.'
+
+    # CDS
+    if informacoes_do_formulario['tipo_de_ato'] == "Nomeação de CD":
+       return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['nomeacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao, ja_tem_funcao))
+    elif informacoes_do_formulario['tipo_de_ato'] == "Exoneração de CD":
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['exoneracao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
+    elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de CD":
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['substituicao'].format())
+    elif informacoes_do_formulario['tipo_de_ato'] == "Recondução de CD":
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['reconducao'].format()) 
+    # FGS    
+    elif informacoes_do_formulario['tipo_de_ato'] == "Designação de FG":
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fgs']['designacao'].format())
+    elif informacoes_do_formulario['tipo_de_ato'] == "Dispensa de FG":
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fgs']['dispensa'].format())
+    elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de FG":
+       return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fgs']['substituicao'].format())
+    #FCCS
+    elif informacoes_do_formulario['tipo_de_ato'] == "Designação de FCC":
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['designacao'].format())
+    elif informacoes_do_formulario['tipo_de_ato'] == "Dispensa de FCC":
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['dispensa'].format())
+    elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de FCC":
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['substituicao'].format())   
+    elif informacoes_do_formulario['tipo_de_ato'] == "FCC não remunerada":
+        if informacoes_do_formulario['tipo_de_ato']['tipo_nao_remunerada'] == 'Designação':
+            return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['nao_remunerada']['designacao'].format())
+        else:
+            return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['nao_remunerada']['dispensa'].format())
+    else:
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_erro'])
+    
 
 #############################################################################################################################
 # QUEM VAI ASSINAR

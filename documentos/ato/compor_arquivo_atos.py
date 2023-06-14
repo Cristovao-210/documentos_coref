@@ -94,13 +94,68 @@ preambulo = {
     
    
 #==============================================================================================================================
+# texto_ato = {
+
+#         'funcao':{
+#             'html': '''
+#                  <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">
+#                     {0}
+#                 </p> '''
+#         }
+# }
+
 texto_ato = {
 
-        'funcao':{
+        'funcao': {
             'html': '''
                  <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">
                     {0}
-                </p> '''
+                </p> ''',
+                'txt_cds': {    
+                    # 0-categoria_cargo (docente/servidor) 1-nome, 2-nome_COORDENAÇÃO/DIREÇÃO, 3-numero_cd, 4 varia conforme o genero do servidor
+                    'nomeacao': '''Nomear, com mandato de 4 (quatro) anos, {0} {1} para exercer a função de {2} ({3}) {4}''', 
+
+                    'exoneracao': 'Exonerar {0} {1} da função de {2} ({3}), por término de mandato.', 
+
+                    # 4 - data inicio substituição / 5 - data fim substituição
+                    'substituicao':'Nomear {0} {1} para substituir {2} ({3}) durante período de vacância da função gratificada, de {4} a {5}.',
+
+                    # 4 - data inicio recondução
+                    'reconducao':'''Reconduzir, a partir de {4}, {0} {1} para exercer a função de {2} ({3}, com mandato de 4 (quatro) anos.'''
+                },
+                'txt_fgs': {
+
+                    'designacao': 'Designar {0} {1} para exercer a função de {2} ({3}).',
+                    'dispensa': 'Dispensar {0} {1} da função de {2} ({3}).',
+
+                    # 4 - razão do afastamento / # 5 - data inicio substituição / 6 - data fim substituição / 7 - Nome de quem vai ser substituído
+                    'substituicao': '''Designar {0} {1} para substituir {2} ({3}) durante o período de {4}, de {5} a {6}, da titular {7}.'''
+                },
+                'txt_fccs': {
+                    
+                    # 2 - Coordenador de grad/pos + Nome do curso
+                    'designacao': 'Designar, para mandato de 2 (dois) anos, {0} {1} para exercer a função de {2} (FCC).',
+
+                    'dispensa': 'Dispensar, por término de mandato, {0} {1} da função de {2} (FCC).',
+
+                    # 2 - Coordenador de grad/pos + Nome do curso / 3 - Razão do afastamento /# 4 - data inicio substituição / 5 - data fim substituição / 6 - Nome de quem vai ser substituído
+                    'substituicao': '''Designar {0} {1} para substituir {2} (FCC), durante o período de {3}, de {4} a {5}, da titular {6}.''',
+
+                    'nao_remunerada': {
+
+                        # 2 - Coordenador de grad/pos + Nome do curso
+                        'designacao':'''
+                        Art. 1º  Designar {0} {1} para exercer a função não remunerada de {2}.
+                        <br>
+                        Art. 2º  Este Ato entra em vigor na data de sua publicação no Boletim de Atos Oficiais da UnB (BAO).''', # em/do -> colocar no campo de descrição do curso
+
+                        'dispensa': '''
+                        Art. 1º  Dispensa {0} {1} da função não remunerada de {2}.
+                        <br>
+                        Art. 2º  Este Ato entra em vigor na data de sua publicação no Boletim de Atos Oficiais da UnB (BAO).'''
+                    }
+                },
+                'txt_erro': 'ERRO: Nenhum Tipo de ato selecionado.'
         }
 }
 
