@@ -113,7 +113,7 @@ texto_ato = {
                 </p> ''',
                 'txt_cds': {    
                     # 0-categoria_cargo (docente/servidor) 1-nome, 2-nome_COORDENAÇÃO/DIREÇÃO, 3-numero_cd, 4 varia conforme o genero do servidor
-                    'nomeacao': '''Nomear, com mandato de 4 (quatro) anos, {0} {1} para exercer a função de {2} ({3}) {4}''', 
+                    'nomeacao': '''Nomear, com mandato de 4 (quatro) anos, {0} {1} para exercer a função de {2} ({3}){4}''', 
 
                     'exoneracao': 'Exonerar {0} {1} da função de {2} ({3}), por término de mandato.', 
 
@@ -121,7 +121,7 @@ texto_ato = {
                     'substituicao':'Nomear {0} {1} para substituir {2} ({3}) durante período de vacância da função gratificada, de {4} a {5}.',
 
                     # 4 - data inicio recondução
-                    'reconducao':'''Reconduzir, a partir de {4}, {0} {1} para exercer a função de {2} ({3}, com mandato de 4 (quatro) anos.'''
+                    'reconducao':'''Reconduzir, a partir de {4}, {0} {1} para exercer a função de {2} ({3}), com mandato de 4 (quatro) anos.'''
                 },
                 'txt_fgs': {
 

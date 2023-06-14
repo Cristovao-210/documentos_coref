@@ -6,7 +6,7 @@ from documentos.ato.base_do_ato import gerar_ato
 
 def formulario_gerar_ato(dados_do_formulario):
 
-    st.subheader(f"FORMULÁRIO PARA COMPOSIÇÃO DE DOCUMENTOS: {dados_do_formulario['documento_selecionado']}")
+    #st.subheader(f"FORMULÁRIO PARA COMPOSIÇÃO DE DOCUMENTOS: {dados_do_formulario['documento_selecionado']}")
     setor_responsavel = dados_do_formulario['setor_responsavel']
 
     with st.form('form_ato', clear_on_submit=True):
@@ -31,6 +31,11 @@ def formulario_gerar_ato(dados_do_formulario):
             dados_do_formulario['dirigente_responsavel'] = st.radio("Assinatura:",("Diretor(a) titular", "Diretor(a) em exercício"))
         elif setor_responsavel == "REITORIA":
             dados_do_formulario['dirigente_responsavel'] = st.radio("Assinatura:",("Reitor(a)", "Vice-Reitor(a)"))
+
+        dados_do_formulario['data_inicial_substuicao'] = "01/06/2023"
+        dados_do_formulario['data_final_substuicao'] = "14/06/2023"
+        dados_do_formulario['data_reconducao'] = "31/07/2023"
+        dados_do_formulario['genero'] = "Masculino"
 
 
 

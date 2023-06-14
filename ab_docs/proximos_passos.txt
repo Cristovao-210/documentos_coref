@@ -1,7 +1,4 @@
 
-**Arquivo compor_arquivo_atos:
-    1 - Criar dicionário com todos os textos dos ATOS
-
 **Arquivo partes_do_ato:
     1 - Criar função que gera o texto do ato
 

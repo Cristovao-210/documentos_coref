@@ -20,5 +20,5 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
 
 
 # verificando salvamento das informações
-st.write(dados_do_formulario)
+#st.write(dados_do_formulario)
     
