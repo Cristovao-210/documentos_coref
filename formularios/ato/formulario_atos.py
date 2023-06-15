@@ -32,6 +32,8 @@ def formulario_gerar_ato(dados_do_formulario):
         elif setor_responsavel == "REITORIA":
             dados_do_formulario['dirigente_responsavel'] = st.radio("Assinatura:",("Reitor(a)", "Vice-Reitor(a)"))
 
+        dados_do_formulario['motivo_do_afastamento'] = ""
+        dados_do_formulario['servidor_a_ser_substituido'] = ""
         dados_do_formulario['data_inicial_substuicao'] = "01/06/2023"
         dados_do_formulario['data_final_substuicao'] = "14/06/2023"
         dados_do_formulario['data_reconducao'] = "31/07/2023"
