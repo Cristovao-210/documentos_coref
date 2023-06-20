@@ -121,16 +121,18 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
                                                                                                         dt_final_substituicao, servidor_a_ser_substituido))
     #FCCS
     elif informacoes_do_formulario['tipo_de_ato'] == "Designação de FCC":
-        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['designacao'].format())
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao))
     elif informacoes_do_formulario['tipo_de_ato'] == "Dispensa de FCC":
-        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['dispensa'].format())
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['dispensa'].format(categoria_funcional, nome_servidor, nome_da_funcao))
     elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de FCC":
-        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['substituicao'].format())   
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao,
+                                                                                                         motivo_do_afastamento, dt_inicial_substituicao,
+                                                                                                         dt_final_substituicao, servidor_a_ser_substituido))   
     elif informacoes_do_formulario['tipo_de_ato'] == "FCC não remunerada":
         if informacoes_do_formulario['tipo_de_ato']['tipo_nao_remunerada'] == 'Designação':
-            return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['nao_remunerada']['designacao'].format())
+            return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['nao_remunerada']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao))
         else:
-            return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['nao_remunerada']['dispensa'].format())
+            return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['nao_remunerada']['dispensa'].format(categoria_funcional, nome_servidor, nome_da_funcao))
     else:
         return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_erro'])
     
