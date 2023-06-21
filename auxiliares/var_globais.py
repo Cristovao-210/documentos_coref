@@ -9,9 +9,9 @@ lista_de_tipos_de_ato = ["","Nomeação de CD", "Exoneração de CD",
 
 lista_de_setores = ["", "DGP", "DGP/DAP", "REITORIA"] # FORMULÁRIO
 
-lista_de_cds = ["","CD-01", "CD-02", "CD-03", "CD-04"]
+# lista_de_cds = []
 
-lista_de_fgs = ["","FG-01", "FG-02", "FG-03"]
+# lista_de_fgs = []
 
 lista_finalidades_do_ato = ["", "Manutenção de Funções"]
 
@@ -25,6 +25,10 @@ lista_de_nome_funcoes = ["",
 
 lista_de_tipos_funcoes = ["", "FCC", "FUNÇÃO NÃO REMUNERADA", "CD-01", "CD-02", "CD-03", "CD-04", "FG-01", "FG-02", "FG-03"] # FORMULÁRIO
 
+dict_de_tipos_funcoes = {'cds': ["","CD-01", "CD-02", "CD-03", "CD-04"],
+                         'fgs': ["","FG-01", "FG-02", "FG-03"],
+                         'fccs': ["", "FCC", "FUNÇÃO NÃO REMUNERADA",]}
+
 lista_de_categorias_funcionais = ["", 
                                   "o servidor", "a servidora",
                                   "o docente", "a docente",
@@ -36,3 +40,5 @@ lista_de_categorias_funcionais = ["",
 # capturando ano
 data_atual = datetime.date.today()
 ano_atual = data_atual.year
+
+print(dict_de_tipos_funcoes.get('cds')[1])

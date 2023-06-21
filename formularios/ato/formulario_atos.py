@@ -28,7 +28,15 @@ def formulario_gerar_ato(dados_do_formulario):
             # 2-nome_COORDENAÇÃO/DIREÇÃO, (Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
             dados_do_formulario['nome_da_funcao'] = st.selectbox("Nome da Função", lista_de_nome_funcoes)
             # 3- cd-1 a 4,fg-1 a 3,fcc
-            dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", lista_de_tipos_funcoes)
+            if "CD" in tp_ato:
+                #dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", lista_de_tipos_funcoes)
+                dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('cds'))
+            elif "FG" in tp_ato:
+                #dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", lista_de_tipos_funcoes)
+                dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('fgs')) 
+            elif "FCC" in tp_ato:
+                #dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", lista_de_tipos_funcoes)
+                dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('fccs'))    
             
            
             
