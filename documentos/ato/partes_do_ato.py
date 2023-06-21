@@ -1,9 +1,12 @@
 import streamlit as st
 from  documentos.ato.compor_arquivo_atos import *
+from auxiliares.funcoes import *
 
 # TÍTULO
 def epigrafe_ato(informacoes_do_formulario): # setor_responsavel, numero_ato
-    numero_do_ato = informacoes_do_formulario['numero_ato']
+
+    numero_do_ato = f"{informacoes_do_formulario['numero_ato']} / {informacoes_do_formulario['ano_do_ato']}"
+
     if informacoes_do_formulario['setor_responsavel'] == "DGP":
         return epigrafe['html'].format(epigrafe['txt_dgp'].format(numero_do_ato))
     elif informacoes_do_formulario['setor_responsavel'] == "DGP/DAP":
@@ -15,16 +18,21 @@ def epigrafe_ato(informacoes_do_formulario): # setor_responsavel, numero_ato
 
 # TEXTO ALINHADO A DIREITA ABAIXO DO TÍTULO
 def ementa_ato(informacoes_do_formulario):
+
+    tpd_ato = informacoes_do_formulario['tipo_de_ato']
+
     # 0-categoria_cargo (o(a) Docente/Servidor(a)/o Professor do Magistério Superior/a Professora do Magistério Superior) 
     categoria_funcional = informacoes_do_formulario['categoria_funcional']
     # 1-nome
     nome_servidor = informacoes_do_formulario['nome_servidor']
     # 2-nome_COORDENAÇÃO/DIREÇÃO, (Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
-    nome_da_funcao = informacoes_do_formulario['nome_da_funcao']
+    nome_da_funcao = f'{informacoes_do_formulario["nome_da_funcao"]} {informacoes_do_formulario["descricao_da_funcao"]}' if informacoes_do_formulario["nome_da_funcao"][0:6] != "Outros" else informacoes_do_formulario["descricao_da_funcao"]
     # 3- cd-1 a 4,fg-1 a 3,fcc
     tipo_de_funcao = informacoes_do_formulario['tipo_de_funcao']
     # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
-    cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
+    if tpd_ato == "Substitução de CD" or tpd_ato == "Substitução de FG" or tpd_ato == "Substitução de FCC":
+        cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
+
     # CDS
     if informacoes_do_formulario['tipo_de_ato'] == "Nomeação de CD":
        return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['nomeacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
@@ -72,20 +80,25 @@ def preambulo_ato(informacoes_do_formulario): # setor_responsavel, numero_do_sei
 # TEXTO DO ATO 
 
 def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
+
+    tpd_ato = informacoes_do_formulario['tipo_de_ato']
     # 0-categoria_cargo (o(a) Docente/Servidor(a)/o Professor do Magistério Superior/a Professora do Magistério Superior) 
     categoria_funcional = informacoes_do_formulario['categoria_funcional']
     # 1-nome
     nome_servidor = informacoes_do_formulario['nome_servidor']
     # 2-nome_COORDENAÇÃO/DIREÇÃO, (Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
-    nome_da_funcao = informacoes_do_formulario['nome_da_funcao']
+    nome_da_funcao = f'{informacoes_do_formulario["nome_da_funcao"]} {informacoes_do_formulario["descricao_da_funcao"]}' if informacoes_do_formulario["nome_da_funcao"][0:6] != "Outros" else informacoes_do_formulario["descricao_da_funcao"]
     # 3- cd-1 a 4,fg-1 a 3,fcc
     tipo_de_funcao = informacoes_do_formulario['tipo_de_funcao']
-    # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
-    motivo_do_afastamento = informacoes_do_formulario['motivo_do_afastamento']
-    cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
-    dt_inicial_substituicao = informacoes_do_formulario['data_inicial_substuicao']
-    dt_final_substituicao = informacoes_do_formulario['data_final_substuicao']
-    servidor_a_ser_substituido = informacoes_do_formulario['servidor_a_ser_substituido']
+
+    if tpd_ato == "Substitução de CD" or tpd_ato == "Substitução de FG" or tpd_ato == "Substitução de FCC":
+        # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
+        motivo_do_afastamento = informacoes_do_formulario['motivo_do_afastamento']
+        cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
+        dt_inicial_substituicao = informacoes_do_formulario['data_inicial_substuicao']
+        dt_final_substituicao = informacoes_do_formulario['data_final_substuicao']
+        servidor_a_ser_substituido = informacoes_do_formulario['servidor_a_ser_substituido']
+
     # detalhe em nomeação de cd
     genero = informacoes_do_formulario['genero']
     ja_tem_funcao = ""
@@ -96,7 +109,8 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
     else:
         ja_tem_funcao = '.'
 
-    data_reconducao = informacoes_do_formulario['data_reconducao']
+    if tpd_ato == "Recondução de CD":
+        data_reconducao = informacoes_do_formulario['data_reconducao']
 
     # CDS
     if informacoes_do_formulario['tipo_de_ato'] == "Nomeação de CD":
@@ -142,6 +156,7 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
 def assinatura_ato(informacoes_do_formulario): # tipo_ato, titularidade 
     
     dirigente_responsavel = informacoes_do_formulario['dirigente_responsavel']
+    
     if dirigente_responsavel == "Decano(a) titular":
         return dirigentes['html'].format(dirigentes['dgp']['decanato']['titular'])
     elif dirigente_responsavel == "Decano(a) em exercício":
