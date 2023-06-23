@@ -1,12 +1,7 @@
 import streamlit as st
 import os
 
-def verificar_conteudo_str(conteudo_str):
-    try:
-        if conteudo_str != "" or conteudo_str != None:
-            return conteudo_str
-    except:
-        return ""
+
 
 #Baixar Arquivo
 def baixar_formulario(form_gerado):

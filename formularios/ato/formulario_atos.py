@@ -10,6 +10,21 @@ def formulario_gerar_ato(dados_do_formulario):
     setor_responsavel = dados_do_formulario['setor_responsavel']
     tp_ato = dados_do_formulario["tipo_de_ato"]
 
+    # em caso de substituição de cargo vago
+    if tp_ato == "Substituição de CD" or tp_ato == "Substituição de FG":
+        cargo_vago = dados_do_formulario['cargo_vago']
+        if cargo_vago == "Sim":
+            is_cg_vago =' durante o período de vacância da função gratificada'
+            desabilita_nome_titular = True
+            
+        else:
+            is_cg_vago = ''
+            desabilita_nome_titular = False
+    else:
+        is_cg_vago = ''
+        desabilita_nome_titular = False
+
+
     with st.form('form_ato', clear_on_submit=True):
 
         coluna_1, coluna_2 = st.columns(2)
@@ -30,33 +45,31 @@ def formulario_gerar_ato(dados_do_formulario):
             # 3- cd-1 a 4,fg-1 a 3,fcc
             if "CD" in tp_ato:
                 #dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", lista_de_tipos_funcoes)
-                dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('cds'))
+                dados_do_formulario['tipo_de_funcao'] = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('cds'))
             elif "FG" in tp_ato:
                 #dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", lista_de_tipos_funcoes)
-                dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('fgs')) 
+                dados_do_formulario['tipo_de_funcao'] = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('fgs'))
             elif "FCC" in tp_ato:
                 #dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", lista_de_tipos_funcoes)
-                dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('fccs'))    
+                dados_do_formulario['tipo_de_funcao'] = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('fccs'))
             
            
             
-            
-            
-            
-           
-            
-        if tp_ato == "Substitução de CD" or tp_ato == "Substitução de FG" or tp_ato == "Substitução de FCC":    
+        
+                
+
+        if tp_ato == "Substituição de CD" or tp_ato == "Substituição de FG" or tp_ato == "Substituição de FCC":    
             # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
-            dados_do_formulario['cargo_a_ser_substituido'] = st.selectbox("Cargo a ser substituído", lista_de_nome_funcoes) # Concatenar com o nome da função]
-            dados_do_formulario['motivo_do_afastamento'] = st.text_input("Durante o período de: ", placeholder="Ex.: Férias, Licença Capacitação, etc")
-            dados_do_formulario['servidor_a_ser_substituido'] = st.text_input("Nome do Titular a ser substituído: ")
+            #dados_do_formulario['cargo_a_ser_substituido'] = st.selectbox("Cargo a ser substituído", lista_de_nome_funcoes) # Concatenar com o nome da função]
+            
+            dados_do_formulario['motivo_do_afastamento'] = st.text_input("Durante o período de: ", value=is_cg_vago, placeholder="Ex.: durante o período de Férias, Licença Capacitação, etc")            
+            dados_do_formulario['servidor_a_ser_substituido'] = st.text_input("Nome do Titular a ser substituído: ", disabled=desabilita_nome_titular, value='')
             dados_do_formulario['data_inicial_substuicao'] = st.date_input("Início da Substituição: ")
             dados_do_formulario['data_final_substuicao'] = st.date_input("Término da Substituição: ")
             dados_do_formulario['genero'] = "Masculino"
         elif tp_ato == "Recondução de CD":        
             # Recondução
             dados_do_formulario['data_reconducao'] = "31/07/2023"
-
 
 
 

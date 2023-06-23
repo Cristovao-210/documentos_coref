@@ -3,9 +3,9 @@ import datetime
 lista_de_documentos = ["", "Ato", "Nota Técnica"] # BARRA LATERAL
 
 lista_de_tipos_de_ato = ["","Nomeação de CD", "Exoneração de CD", 
-                            "Substitução de CD", "Recondução de CD", 
-                            "Designação de FG", "Dispensa de FG", "Substitução de FG", 
-                            "Designação de FCC", "Dispensa de FCC", "Substitução de FCC", "FCC não remunerada"] # FORMULÁRIO
+                            "Substituição de CD", "Recondução de CD", 
+                            "Designação de FG", "Dispensa de FG", "Substituição de FG", 
+                            "Designação de FCC", "Dispensa de FCC", "Substituição de FCC", "FCC não remunerada"] # FORMULÁRIO
 
 lista_de_setores = ["", "DGP", "DGP/DAP", "REITORIA"] # FORMULÁRIO
 
@@ -41,4 +41,4 @@ lista_de_categorias_funcionais = ["",
 data_atual = datetime.date.today()
 ano_atual = data_atual.year
 
-print(dict_de_tipos_funcoes.get('cds')[1])
+#print(dict_de_tipos_funcoes.get('cds')[1])

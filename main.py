@@ -16,12 +16,20 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
             if dados_do_formulario['finalidade_do_ato'] == "Manutenção de Funções":
                 dados_do_formulario['tipo_de_ato'] = st.sidebar.selectbox("Informe o tipo de ato", lista_de_tipos_de_ato)
                 if dados_do_formulario["tipo_de_ato"] != "":
+                    # detalhe em nomeação de cd
                     if dados_do_formulario["tipo_de_ato"] == "Nomeação de CD":
                         dados_do_formulario["ja_possui_funcao"] = st.sidebar.radio("Já possuí Função?", ("Não", "Sim"), )
                         if dados_do_formulario['ja_possui_funcao'] == "Sim":
                             dados_do_formulario['genero'] = st.sidebar.radio("Informe o Gênero", ("Masculino", "Feminino"))
                         else:
                             dados_do_formulario['genero'] = ""
+                    # detalhe em exoneração de cd - parte final do texto
+                    if dados_do_formulario["tipo_de_ato"] == "Exoneração de CD":
+                        dados_do_formulario['termino_de_mandato'] = st.sidebar.radio("É por término de mandato? ", ("Sim", "Não"))
+                    # detalhe em substituição de cd - 
+                    if dados_do_formulario["tipo_de_ato"] == "Substituição de CD" or dados_do_formulario["tipo_de_ato"] == "Substituição de FG":
+                        dados_do_formulario['cargo_vago'] = st.sidebar.radio("É de Cargo Vago? ", ("Sim", "Não"))
+                    
                     formulario_gerar_ato(dados_do_formulario)
 
 

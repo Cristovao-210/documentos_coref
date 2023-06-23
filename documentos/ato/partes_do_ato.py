@@ -30,16 +30,16 @@ def ementa_ato(informacoes_do_formulario):
     # 3- cd-1 a 4,fg-1 a 3,fcc
     tipo_de_funcao = informacoes_do_formulario['tipo_de_funcao']
     # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
-    if tpd_ato == "Substitução de CD" or tpd_ato == "Substitução de FG" or tpd_ato == "Substitução de FCC":
-        cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
+    # if tpd_ato == "Substituição de CD" or tpd_ato == "Substituição de FG" or tpd_ato == "Substituição de FCC":
+    #     cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
 
     # CDS
     if informacoes_do_formulario['tipo_de_ato'] == "Nomeação de CD":
        return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['nomeacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     elif informacoes_do_formulario['tipo_de_ato'] == "Exoneração de CD":
         return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['exoneracao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
-    elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de CD":
-        return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['substituicao'].format(categoria_funcional, nome_servidor, cargo_a_ser_substituido, tipo_de_funcao))
+    elif informacoes_do_formulario['tipo_de_ato'] == "Substituição de CD":
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao)) #cargo_a_ser_substituido
     elif informacoes_do_formulario['tipo_de_ato'] == "Recondução de CD":
         return ementa['funcao']['html'].format(ementa['funcao']['txt_cds']['reconducao'].format(categoria_funcional, nome_servidor, nome_da_funcao)) 
     # FGS    
@@ -47,15 +47,15 @@ def ementa_ato(informacoes_do_formulario):
         return ementa['funcao']['html'].format(ementa['funcao']['txt_fgs']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     elif informacoes_do_formulario['tipo_de_ato'] == "Dispensa de FG":
         return ementa['funcao']['html'].format(ementa['funcao']['txt_fgs']['dispensa'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
-    elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de FG":
-       return ementa['funcao']['html'].format(ementa['funcao']['txt_fgs']['substituicao'].format(categoria_funcional, nome_servidor, cargo_a_ser_substituido, tipo_de_funcao))
+    elif informacoes_do_formulario['tipo_de_ato'] == "Substituição de FG":
+       return ementa['funcao']['html'].format(ementa['funcao']['txt_fgs']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))#cargo_a_ser_substituido
     #FCCS
     elif informacoes_do_formulario['tipo_de_ato'] == "Designação de FCC":
         return ementa['funcao']['html'].format(ementa['funcao']['txt_fccs']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     elif informacoes_do_formulario['tipo_de_ato'] == "Dispensa de FCC":
         return ementa['funcao']['html'].format(ementa['funcao']['txt_fccs']['dispensa'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
-    elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de FCC":
-        return ementa['funcao']['html'].format(ementa['funcao']['txt_fccs']['substituicao'].format(categoria_funcional, nome_servidor, cargo_a_ser_substituido, tipo_de_funcao))   
+    elif informacoes_do_formulario['tipo_de_ato'] == "Substituição de FCC":
+        return ementa['funcao']['html'].format(ementa['funcao']['txt_fccs']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))#cargo_a_ser_substituido
     elif informacoes_do_formulario['tipo_de_ato'] == "FCC não remunerada":
         if informacoes_do_formulario['tipo_de_ato']['tipo_nao_remunerada'] == 'Designação':
             return ementa['funcao']['html'].format(ementa['funcao']['txt_fccs']['nao_remunerada']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
@@ -91,36 +91,46 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
     # 3- cd-1 a 4,fg-1 a 3,fcc
     tipo_de_funcao = informacoes_do_formulario['tipo_de_funcao']
 
-    if tpd_ato == "Substitução de CD" or tpd_ato == "Substitução de FG" or tpd_ato == "Substitução de FCC":
+    if tpd_ato == "Substituição de CD" or tpd_ato == "Substituição de FG" or tpd_ato == "Substituição de FCC":
         # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
         motivo_do_afastamento = informacoes_do_formulario['motivo_do_afastamento']
-        cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
+        #cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
         dt_inicial_substituicao = informacoes_do_formulario['data_inicial_substuicao']
         dt_final_substituicao = informacoes_do_formulario['data_final_substuicao']
         servidor_a_ser_substituido = informacoes_do_formulario['servidor_a_ser_substituido']
+        
 
     # detalhe em nomeação de cd
-    genero = informacoes_do_formulario['genero']
-    ja_tem_funcao = ""
-    if genero == "Masculino":
-        ja_tem_funcao = ', dispensando-o da função que atualmente ocupa.'
-    elif genero == "Feminino":
-        ja_tem_funcao = ', dispensando-a da função que atualmente ocupa.'
-    else:
-        ja_tem_funcao = '.'
+    if tpd_ato == "Nomeação de CD":
+        genero = informacoes_do_formulario['genero']
+        ja_tem_funcao = ""
+        if genero == "Masculino":
+            ja_tem_funcao = ', dispensando-o da função que atualmente ocupa.'
+        elif genero == "Feminino":
+            ja_tem_funcao = ', dispensando-a da função que atualmente ocupa.'
+        else:
+            ja_tem_funcao = '.'
 
-    if tpd_ato == "Recondução de CD":
-        data_reconducao = informacoes_do_formulario['data_reconducao']
+    # detalhe em exoneração de cd - parte final do texto
+    if tpd_ato == "Exoneração de CD":
+        termino = informacoes_do_formulario['termino_de_mandato']
+        if termino == "Sim":
+            termino_de_mandato = ' , por término de mandato.'
+        else:
+            termino_de_mandato = '.'
+
+        if tpd_ato == "Recondução de CD":
+            data_reconducao = informacoes_do_formulario['data_reconducao']
 
     # CDS
     if informacoes_do_formulario['tipo_de_ato'] == "Nomeação de CD":
        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['nomeacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao,
                                                                                                     ja_tem_funcao))
     elif informacoes_do_formulario['tipo_de_ato'] == "Exoneração de CD":
-        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['exoneracao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
-    elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de CD":
-        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['substituicao'].format(categoria_funcional, nome_servidor, cargo_a_ser_substituido,
-                                                                                                         tipo_de_funcao, dt_inicial_substituicao, dt_final_substituicao))
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['exoneracao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao, termino_de_mandato))
+    elif informacoes_do_formulario['tipo_de_ato'] == "Substituição de CD":
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao,
+                                                                                                         tipo_de_funcao, motivo_do_afastamento, dt_inicial_substituicao, dt_final_substituicao))# cargo_a_ser_substituido
     elif informacoes_do_formulario['tipo_de_ato'] == "Recondução de CD":
         return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['reconducao'].format(categoria_funcional, nome_servidor, nome_da_funcao,
                                                                                                        tipo_de_funcao, data_reconducao)) 
@@ -129,7 +139,7 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
         return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fgs']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     elif informacoes_do_formulario['tipo_de_ato'] == "Dispensa de FG":
         return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fgs']['dispensa'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
-    elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de FG":
+    elif informacoes_do_formulario['tipo_de_ato'] == "Substituição de FG":
        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fgs']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao,
                                                                                                         tipo_de_funcao, motivo_do_afastamento, dt_inicial_substituicao,
                                                                                                         dt_final_substituicao, servidor_a_ser_substituido))
@@ -138,7 +148,7 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
         return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao))
     elif informacoes_do_formulario['tipo_de_ato'] == "Dispensa de FCC":
         return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['dispensa'].format(categoria_funcional, nome_servidor, nome_da_funcao))
-    elif informacoes_do_formulario['tipo_de_ato'] == "Substitução de FCC":
+    elif informacoes_do_formulario['tipo_de_ato'] == "Substituição de FCC":
         return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao,
                                                                                                          motivo_do_afastamento, dt_inicial_substituicao,
                                                                                                          dt_final_substituicao, servidor_a_ser_substituido))   
