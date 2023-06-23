@@ -84,6 +84,7 @@ def preambulo_ato(informacoes_do_formulario): # setor_responsavel, numero_do_sei
 def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
 
     tpd_ato = informacoes_do_formulario['tipo_de_ato']
+    carg_vag = informacoes_do_formulario['cargo_vago']
     # 0-categoria_cargo (o(a) Docente/Servidor(a)/o Professor do Magistério Superior/a Professora do Magistério Superior) 
     categoria_funcional = informacoes_do_formulario['categoria_funcional']
     if categoria_funcional == "Outros (Usar campo 'Nome do Servidor')":
@@ -101,7 +102,7 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
         #cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
         dt_inicial_substituicao = data_convertida_br(str(informacoes_do_formulario['data_inicial_substuicao']))
         dt_final_substituicao = data_convertida_br(str(informacoes_do_formulario['data_final_substuicao']))
-        servidor_a_ser_substituido = data_convertida_br(str(informacoes_do_formulario['servidor_a_ser_substituido']))
+        servidor_a_ser_substituido = informacoes_do_formulario['servidor_a_ser_substituido']
 
         print(type(servidor_a_ser_substituido))
         
@@ -134,9 +135,16 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
                                                                                                     ja_tem_funcao))
     elif informacoes_do_formulario['tipo_de_ato'] == "Exoneração de CD":
         return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['exoneracao'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao, termino_de_mandato))
+    
     elif informacoes_do_formulario['tipo_de_ato'] == "Substituição de CD":
-        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao,
-                                                                                                         tipo_de_funcao, motivo_do_afastamento, dt_inicial_substituicao, dt_final_substituicao))# cargo_a_ser_substituido
+        if carg_vag == "Sim":
+            return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['substituicao_vago'].format(categoria_funcional, nome_servidor, nome_da_funcao,
+                                                                                    tipo_de_funcao, motivo_do_afastamento, dt_inicial_substituicao, 
+                                                                                    dt_final_substituicao))# cargo_a_ser_substituido
+        else:
+            return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao,
+                                                                                                         tipo_de_funcao, motivo_do_afastamento,
+                                                                                                         dt_inicial_substituicao, dt_final_substituicao, servidor_a_ser_substituido))    
     elif informacoes_do_formulario['tipo_de_ato'] == "Recondução de CD":
         return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_cds']['reconducao'].format(categoria_funcional, nome_servidor, nome_da_funcao,
                                                                                                        tipo_de_funcao, data_reconducao)) 

@@ -118,7 +118,9 @@ texto_ato = {
                     'exoneracao': 'Exonerar {0} {1} da função de {2} ({3}){4}', # , por término de mandato
 
                     # 4 - data inicio substituição / 5 - data fim substituição / 7 - da titular nome_titular.
-                    'substituicao':'Nomear {0} {1} para substituir {2} ({3}) {4}, de {5} a {6} {7}.', # durante período de vacância da função gratificada
+                    'substituicao':'Nomear {0} {1} para substituir {2} ({3}) durante o período de {4}, de {5} a {6}, do titular {7}.', # durante período de vacância da função gratificada
+
+                    'substituicao_vago':'Nomear {0} {1} para substituir {2} ({3}) {4}, de {5} a {6}.',
 
                     # 4 - data inicio recondução
                     'reconducao':'''Reconduzir, a partir de {4}, {0} {1} para exercer a função de {2} ({3}), com mandato de 4 (quatro) anos.'''
@@ -129,7 +131,9 @@ texto_ato = {
                     'dispensa': 'Dispensar {0} {1} da função de {2} ({3}).',
 
                     # 4 - razão do afastamento / # 5 - data inicio substituição / 6 - data fim substituição / 7 - Nome de quem vai ser substituído
-                    'substituicao': '''Designar {0} {1} para substituir {2} ({3}) durante o período de {4}, de {5} a {6}, da titular {7}.'''
+                    'substituicao': '''Designar {0} {1} para substituir {2} ({3}) durante o período de {4}, de {5} a {6}, do titular {7}.''',
+
+                    'substituicao_vago': '''Designar {0} {1} para substituir {2} ({3}) {4}, de {5} a {6}.'''
                 },
                 'txt_fccs': {
                     
