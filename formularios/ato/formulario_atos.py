@@ -6,7 +6,6 @@ from documentos.ato.base_do_ato import gerar_ato
 
 def formulario_gerar_ato(dados_do_formulario):
 
-    #st.subheader(f"FORMULÁRIO PARA COMPOSIÇÃO DE DOCUMENTOS: {dados_do_formulario['documento_selecionado']}")
     setor_responsavel = dados_do_formulario['setor_responsavel']
     tp_ato = dados_do_formulario["tipo_de_ato"]
 
@@ -16,13 +15,16 @@ def formulario_gerar_ato(dados_do_formulario):
         if cargo_vago == "Sim":
             is_cg_vago =' durante o período de vacância da função gratificada'
             desabilita_nome_titular = True
-            
+            a_func_de = 'a função de'
         else:
             is_cg_vago = ''
             desabilita_nome_titular = False
+            a_func_de = ''
     else:
         is_cg_vago = ''
         desabilita_nome_titular = False
+        a_func_de = ''
+        cargo_vago = ''
 
 
     with st.form('form_ato', clear_on_submit=True):
@@ -31,39 +33,38 @@ def formulario_gerar_ato(dados_do_formulario):
         with coluna_1:
             dados_do_formulario['numero_ato'] = st.text_input('Informe o número do Ato')
             dados_do_formulario['numero_do_sei'] = st.text_input('Informe o número do Processo SEI')
-            # 1-nome
             dados_do_formulario['nome_servidor'] = st.text_input('Nome do Servidor')
-            dados_do_formulario['descricao_da_funcao'] = st.text_input("Descrição da função", placeholder="Ex: da Faculdade de Tecnologia")
+            dados_do_formulario['descricao_da_funcao'] = st.text_input("Descrição da função", placeholder="Ex: da Faculdade de Tecnologia", value=a_func_de)
             
             
         with coluna_2:
             dados_do_formulario['ano_do_ato'] = st.text_input('Ano do Ato', value=ano_atual)
-            # 0-categoria_cargo (o(a) Docente/Servidor(a)/o Professor do Magistério Superior/a Professora do Magistério Superior) 
             dados_do_formulario['categoria_funcional'] = st.selectbox("Catergoria Funcional", lista_de_categorias_funcionais)
-            # 2-nome_COORDENAÇÃO/DIREÇÃO, (Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
-            dados_do_formulario['nome_da_funcao'] = st.selectbox("Nome da Função", lista_de_nome_funcoes)
-            # 3- cd-1 a 4,fg-1 a 3,fcc
+            # verificando se é cargo vago ou não para saber se precisa da lista de nomes da função ou não.
+            if "Substituição" in tp_ato and cargo_vago == "Sim":
+                dados_do_formulario['nome_da_funcao'] = st.selectbox("Nome da Função", lista_de_nome_funcoes_generos, disabled=True)
+            elif "Substituição" in tp_ato and cargo_vago == "Não":
+                dados_do_formulario['nome_da_funcao'] = st.selectbox("Nome da Função", lista_de_nome_funcoes_generos)
+            elif "Substituição de FCC" in tp_ato:
+                dados_do_formulario['nome_da_funcao'] = st.selectbox("Nome da Função", lista_de_nome_funcoes_generos)
+            else:
+                dados_do_formulario['nome_da_funcao'] = st.selectbox("Nome da Função", lista_de_nome_funcoes)     
+
             if "CD" in tp_ato:
-                #dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", lista_de_tipos_funcoes)
                 dados_do_formulario['tipo_de_funcao'] = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('cds'))
             elif "FG" in tp_ato:
-                #dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", lista_de_tipos_funcoes)
                 dados_do_formulario['tipo_de_funcao'] = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('fgs'))
             elif "FCC" in tp_ato:
-                #dados_do_formulario['tipo_de_funcao']  = st.selectbox("Tipo de Função", lista_de_tipos_funcoes)
+                
                 dados_do_formulario['tipo_de_funcao'] = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('fccs'))
             
-           
-            
-        
-                
-
+        # SUBSTITUIÇÃO / RECONDUÇÃO
         if tp_ato == "Substituição de CD" or tp_ato == "Substituição de FG" or tp_ato == "Substituição de FCC":    
             # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
             #dados_do_formulario['cargo_a_ser_substituido'] = st.selectbox("Cargo a ser substituído", lista_de_nome_funcoes) # Concatenar com o nome da função]
             
             dados_do_formulario['motivo_do_afastamento'] = st.text_input("Durante o período de: ", value=is_cg_vago, placeholder="Ex.: durante o período de Férias, Licença Capacitação, etc")            
-            dados_do_formulario['servidor_a_ser_substituido'] = st.text_input("Nome do Titular a ser substituído: ", disabled=desabilita_nome_titular, value='')
+            dados_do_formulario['servidor_a_ser_substituido'] = st.text_input("Nome do Titular a ser substituído: ", disabled=desabilita_nome_titular, value='', placeholder="Não preencher em caso de substiuição de CD")
             dados_do_formulario['data_inicial_substuicao'] = st.date_input("Início da Substituição: ")
             dados_do_formulario['data_final_substuicao'] = st.date_input("Término da Substituição: ")
             dados_do_formulario['genero'] = "Masculino"
@@ -71,9 +72,7 @@ def formulario_gerar_ato(dados_do_formulario):
             # Recondução
             dados_do_formulario['data_reconducao'] = "31/07/2023"
 
-
-
-        # assinatura
+        # ASSINATURA DO ATO
         if setor_responsavel == "DGP":
             dados_do_formulario['dirigente_responsavel'] = st.radio("Assinatura:",("Decano(a) titular", "Decano(a) em exercício"))
         elif setor_responsavel == "DGP/DAP":
@@ -81,8 +80,8 @@ def formulario_gerar_ato(dados_do_formulario):
         elif setor_responsavel == "REITORIA":
             dados_do_formulario['dirigente_responsavel'] = st.radio("Assinatura:",("Reitor(a)", "Vice-Reitor(a)"))
 
-
-        st.write("") # Quebra de linha
+        # Quebra de linha / botão para gravar informações
+        st.write("") 
         coluna_btn_1, coluna_btn_2, coluna_btn_3 = st.columns([2,3,1])
         with coluna_btn_1:
             pass
@@ -91,6 +90,7 @@ def formulario_gerar_ato(dados_do_formulario):
             
         with coluna_btn_3:
             pass
+
 
     if btn_gera_ato:
         gerar_ato(dados_do_formulario)

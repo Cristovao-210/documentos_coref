@@ -23,6 +23,8 @@ def ementa_ato(informacoes_do_formulario):
 
     # 0-categoria_cargo (o(a) Docente/Servidor(a)/o Professor do Magistério Superior/a Professora do Magistério Superior) 
     categoria_funcional = informacoes_do_formulario['categoria_funcional']
+    if categoria_funcional == "Outros (Usar campo 'Nome do Servidor')":
+        categoria_funcional = ''
     # 1-nome
     nome_servidor = informacoes_do_formulario['nome_servidor']
     # 2-nome_COORDENAÇÃO/DIREÇÃO, (Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
@@ -84,6 +86,8 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
     tpd_ato = informacoes_do_formulario['tipo_de_ato']
     # 0-categoria_cargo (o(a) Docente/Servidor(a)/o Professor do Magistério Superior/a Professora do Magistério Superior) 
     categoria_funcional = informacoes_do_formulario['categoria_funcional']
+    if categoria_funcional == "Outros (Usar campo 'Nome do Servidor')":
+        categoria_funcional = ''
     # 1-nome
     nome_servidor = informacoes_do_formulario['nome_servidor']
     # 2-nome_COORDENAÇÃO/DIREÇÃO, (Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
@@ -95,9 +99,11 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
         # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
         motivo_do_afastamento = informacoes_do_formulario['motivo_do_afastamento']
         #cargo_a_ser_substituido = informacoes_do_formulario['cargo_a_ser_substituido'] # Concatenar com o nome da função]
-        dt_inicial_substituicao = informacoes_do_formulario['data_inicial_substuicao']
-        dt_final_substituicao = informacoes_do_formulario['data_final_substuicao']
-        servidor_a_ser_substituido = informacoes_do_formulario['servidor_a_ser_substituido']
+        dt_inicial_substituicao = data_convertida_br(str(informacoes_do_formulario['data_inicial_substuicao']))
+        dt_final_substituicao = data_convertida_br(str(informacoes_do_formulario['data_final_substuicao']))
+        servidor_a_ser_substituido = data_convertida_br(str(informacoes_do_formulario['servidor_a_ser_substituido']))
+
+        print(type(servidor_a_ser_substituido))
         
 
     # detalhe em nomeação de cd
@@ -120,7 +126,7 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
             termino_de_mandato = '.'
 
         if tpd_ato == "Recondução de CD":
-            data_reconducao = informacoes_do_formulario['data_reconducao']
+            data_reconducao = data_convertida_br(str(informacoes_do_formulario['data_reconducao']))
 
     # CDS
     if informacoes_do_formulario['tipo_de_ato'] == "Nomeação de CD":

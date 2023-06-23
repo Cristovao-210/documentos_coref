@@ -117,8 +117,8 @@ texto_ato = {
 
                     'exoneracao': 'Exonerar {0} {1} da função de {2} ({3}){4}', # , por término de mandato
 
-                    # 4 - data inicio substituição / 5 - data fim substituição
-                    'substituicao':'Nomear {0} {1} para substituir {2} ({3}) {4}, de {5} a {6}.', # durante período de vacância da função gratificada
+                    # 4 - data inicio substituição / 5 - data fim substituição / 7 - da titular nome_titular.
+                    'substituicao':'Nomear {0} {1} para substituir {2} ({3}) {4}, de {5} a {6} {7}.', # durante período de vacância da função gratificada
 
                     # 4 - data inicio recondução
                     'reconducao':'''Reconduzir, a partir de {4}, {0} {1} para exercer a função de {2} ({3}), com mandato de 4 (quatro) anos.'''

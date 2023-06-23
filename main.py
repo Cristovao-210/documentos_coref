@@ -2,6 +2,7 @@ import streamlit as st
 from auxiliares.var_globais import *
 from formularios.ato.formulario_atos import *
 
+st.set_page_config(page_title="Atos UnB")
 st.subheader("GERADOR DE DOCUMENTOS OFICIAIS")
 
 dados_do_formulario = {}
