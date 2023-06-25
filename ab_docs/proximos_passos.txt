@@ -1,6 +1,7 @@
 
 **Arquivo partes_do_ato:
-    1 - Criar função que gera o texto do ato
+    1 - Criar função que gera o texto do 
+    2 - Colocar opção para gerar substituicao de CARGO VAGO para FCC
 
 **Arquivo formulario_atos:
     1 - Finalizar lógica da entrada de dados pelo formulário.

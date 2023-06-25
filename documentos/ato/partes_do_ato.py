@@ -154,9 +154,15 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
     elif informacoes_do_formulario['tipo_de_ato'] == "Dispensa de FG":
         return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fgs']['dispensa'].format(categoria_funcional, nome_servidor, nome_da_funcao, tipo_de_funcao))
     elif informacoes_do_formulario['tipo_de_ato'] == "Substituição de FG":
-       return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fgs']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao,
+       if carg_vag == "Sim":
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fgs']['substituicao_vago'].format(categoria_funcional, nome_servidor, nome_da_funcao,
+                                                                                                        tipo_de_funcao, motivo_do_afastamento, dt_inicial_substituicao,
+                                                                                                        dt_final_substituicao))
+       else:
+        return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fgs']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao,
                                                                                                         tipo_de_funcao, motivo_do_afastamento, dt_inicial_substituicao,
                                                                                                         dt_final_substituicao, servidor_a_ser_substituido))
+           
     #FCCS
     elif informacoes_do_formulario['tipo_de_ato'] == "Designação de FCC":
         return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao))
