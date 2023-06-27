@@ -1,7 +1,9 @@
 
 **Arquivo partes_do_ato:
-    1 - Criar função que gera o texto do 
-    2 - Colocar opção para gerar substituicao de CARGO VAGO para FCC
+    1 - Fazer configuração das strings recebidas no formulário 
+    
 
 **Arquivo formulario_atos:
     1 - Finalizar lógica da entrada de dados pelo formulário.
+    2 - Verificar nomenclaturas do formulário
+    3 - Resolver problema "do titular" / "da titular"
