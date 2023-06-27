@@ -10,7 +10,7 @@ def formulario_gerar_ato(dados_do_formulario):
     tp_ato = dados_do_formulario["tipo_de_ato"]
 
     # em caso de substituição de cargo vago
-    if tp_ato == "Substituição de CD" or tp_ato == "Substituição de FG":
+    if tp_ato == "Substituição de CD" or tp_ato == "Substituição de FG" or tp_ato == "Substituição de FCC":
         cargo_vago = dados_do_formulario['cargo_vago']
         if cargo_vago == "Sim":
             is_cg_vago =' durante o período de vacância da função gratificada'
@@ -64,7 +64,7 @@ def formulario_gerar_ato(dados_do_formulario):
             #dados_do_formulario['cargo_a_ser_substituido'] = st.selectbox("Cargo a ser substituído", lista_de_nome_funcoes) # Concatenar com o nome da função]
             
             dados_do_formulario['motivo_do_afastamento'] = st.text_input("Durante o período de: ", value=is_cg_vago, placeholder="Ex.: durante o período de Férias, Licença Capacitação, etc")            
-            dados_do_formulario['servidor_a_ser_substituido'] = st.text_input("Nome do Titular a ser substituído: ", disabled=desabilita_nome_titular, value='', placeholder="Não preencher em caso de substiuição de CD")
+            dados_do_formulario['servidor_a_ser_substituido'] = st.text_input("Nome do Titular a ser substituído: ", disabled=desabilita_nome_titular, value='')
             dados_do_formulario['data_inicial_substuicao'] = st.date_input("Início da Substituição: ")
             dados_do_formulario['data_final_substuicao'] = st.date_input("Término da Substituição: ")
             dados_do_formulario['genero'] = "Masculino"

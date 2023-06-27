@@ -54,9 +54,9 @@ ementa = {
         'txt_fccs': {
             # 0-Genero do Cargo (o Professor do Magistério Superior/a Professora do Magistério Superior) 
             # 1-nome, 2-(Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
-            'designacao': 'Designa {0} {1} para exercer a função de {2} em/do {3} (FCC).',
-            'dispensa': 'Dispensa {0} {1} da função de {2} em/do {3} (FCC).',
-            'substituicao': 'Designa {0} {1} para substituir {2} em/do {3} (FCC).',
+            'designacao': 'Designa {0} {1} para exercer a função de {2} ({3}).', #  em/do 
+            'dispensa': 'Dispensa {0} {1} da função de {2} ({3}).', #em/do 
+            'substituicao': 'Designa {0} {1} para substituir {2} ({3}).',# em/do 
             'nao_remunerada': {
                 'designacao':'Designa {0} {1} para exercer a função não remunerada de {2} em/do {3}.', # em/do -> colocar no campo de descrição do curso
                 'dispensa': 'Dispensa {0} {1} da função não remunerada de {2} em/do {3}.'
@@ -143,7 +143,9 @@ texto_ato = {
                     'dispensa': 'Dispensar, por término de mandato, {0} {1} da função de {2} (FCC).',
 
                     # 2 - Coordenador de grad/pos + Nome do curso / 3 - Razão do afastamento /# 4 - data inicio substituição / 5 - data fim substituição / 6 - Nome de quem vai ser substituído
-                    'substituicao': '''Designar {0} {1} para substituir {2} (FCC), durante o período de {3}, de {4} a {5}, da titular {6}.''',
+                    'substituicao': '''Designar {0} {1} para substituir {2} (FCC), durante o período de {3}, de {4} a {5}, do titular {6}.''',
+
+                    'substituicao_vago': '''Designar {0} {1} para substituir {2} (FCC) {3}, de {4} a {5}.''',
 
                     'nao_remunerada': {
 

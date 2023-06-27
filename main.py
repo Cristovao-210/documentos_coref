@@ -28,7 +28,7 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                     if dados_do_formulario["tipo_de_ato"] == "Exoneração de CD":
                         dados_do_formulario['termino_de_mandato'] = st.sidebar.radio("É por término de mandato? ", ("Sim", "Não"))
                     # detalhe em substituição de cd - 
-                    if dados_do_formulario["tipo_de_ato"] == "Substituição de CD" or dados_do_formulario["tipo_de_ato"] == "Substituição de FG":
+                    if dados_do_formulario["tipo_de_ato"] == "Substituição de CD" or dados_do_formulario["tipo_de_ato"] == "Substituição de FG" or dados_do_formulario["tipo_de_ato"] == "Substituição de FCC":
                         dados_do_formulario['cargo_vago'] = st.sidebar.radio("É de Cargo Vago? ", ("Sim", "Não"))
                     
                     formulario_gerar_ato(dados_do_formulario)
