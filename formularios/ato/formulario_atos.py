@@ -57,7 +57,6 @@ def formulario_gerar_ato(dados_do_formulario):
             elif "FG" in tp_ato:
                 dados_do_formulario['tipo_de_funcao'] = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('fgs'))
             elif "FCC" in tp_ato:
-                
                 dados_do_formulario['tipo_de_funcao'] = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('fccs'))
             
         # SUBSTITUIÇÃO / RECONDUÇÃO
@@ -65,8 +64,11 @@ def formulario_gerar_ato(dados_do_formulario):
             # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
             #dados_do_formulario['cargo_a_ser_substituido'] = st.selectbox("Cargo a ser substituído", lista_de_nome_funcoes) # Concatenar com o nome da função]
             
-            dados_do_formulario['motivo_do_afastamento'] = st.text_input("Durante o período de: ", value=is_cg_vago, placeholder="Ex.: durante o período de Férias, Licença Capacitação, etc")            
+            dados_do_formulario['motivo_do_afastamento'] = st.text_input("Durante o período de: ", value=is_cg_vago, placeholder="Ex.: durante o período de Férias, Licença Capacitação, etc")
             dados_do_formulario['servidor_a_ser_substituido'] = st.text_input("Nome do Titular a ser substituído: ", disabled=desabilita_nome_titular, value='')
+            if is_cg_vago == '':
+                dados_do_formulario['do_da_titular'] = st.radio("Definir Gênero: ", ('do titular', 'da titular'))            
+                dados_do_formulario['servidor_a_ser_substituido'] = f"{dados_do_formulario['do_da_titular']} {dados_do_formulario['servidor_a_ser_substituido']}"
             dados_do_formulario['data_inicial_substuicao'] = st.date_input("Início da Substituição: ")
             dados_do_formulario['data_final_substuicao'] = st.date_input("Término da Substituição: ")
             dados_do_formulario['genero'] = "Masculino"
