@@ -127,7 +127,7 @@ texto_ato = {
                     'exoneracao': 'Exonerar {0} {1} da função de {2} ({3}){4}', # , por término de mandato
 
                     # 4 - data inicio substituição / 5 - data fim substituição / 7 - da titular nome_titular.
-                    'substituicao':'Nomear {0} {1} para substituir {2} ({3}) durante o período de {4}, de {5} a {6}, do titular {7}.', # durante período de vacância da função gratificada
+                    'substituicao':'Nomear {0} {1} para substituir {2} ({3}) durante o período de {4}, de {5} a {6}, {7}.', # durante período de vacância da função gratificada
 
                     'substituicao_vago':'Nomear {0} {1} para substituir {2} ({3}) {4}, de {5} a {6}.',
 
@@ -140,7 +140,7 @@ texto_ato = {
                     'dispensa': 'Dispensar {0} {1} da função de {2} ({3}).',
 
                     # 4 - razão do afastamento / # 5 - data inicio substituição / 6 - data fim substituição / 7 - Nome de quem vai ser substituído
-                    'substituicao': '''Designar {0} {1} para substituir {2} ({3}) durante o período de {4}, de {5} a {6}, do titular {7}.''',
+                    'substituicao': '''Designar {0} {1} para substituir {2} ({3}) durante o período de {4}, de {5} a {6}, {7}.''',
 
                     'substituicao_vago': '''Designar {0} {1} para substituir {2} ({3}) {4}, de {5} a {6}.'''
                 },
@@ -152,7 +152,7 @@ texto_ato = {
                     'dispensa': 'Dispensar, por término de mandato, {0} {1} da função de {2} (FCC).',
 
                     # 2 - Coordenador de grad/pos + Nome do curso / 3 - Razão do afastamento /# 4 - data inicio substituição / 5 - data fim substituição / 6 - Nome de quem vai ser substituído
-                    'substituicao': '''Designar {0} {1} para substituir {2} (FCC), durante o período de {3}, de {4} a {5}, do titular {6}.''',
+                    'substituicao': '''Designar {0} {1} para substituir {2} (FCC), durante o período de {3}, de {4} a {5}, {6}.''',
 
                     'substituicao_vago': '''Designar {0} {1} para substituir {2} (FCC) {3}, de {4} a {5}.''',
 
