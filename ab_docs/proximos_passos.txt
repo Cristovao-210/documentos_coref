@@ -1,6 +1,11 @@
 
 **Arquivo partes_do_ato:
-    1 - Fazer configuração das strings recebidas no formulário 
+    1 - Fazer configuração das strings recebidas no formulário
+    2 - Fazer lógica para recondução e fcc não remunerada
+
+
+**Arquivo compor_arquivo_atos:
+    
     
 
 **Arquivo formulario_atos:

@@ -12,6 +12,7 @@ def formulario_gerar_ato(dados_do_formulario):
     # em caso de substituição de cargo vago
     if tp_ato == "Substituição de CD" or tp_ato == "Substituição de FG" or tp_ato == "Substituição de FCC":
         cargo_vago = dados_do_formulario['cargo_vago']
+        cp_nome_servidor = "Nome do Substituto"
         if cargo_vago == "Sim":
             is_cg_vago =' durante o período de vacância da função gratificada'
             desabilita_nome_titular = True
@@ -25,6 +26,7 @@ def formulario_gerar_ato(dados_do_formulario):
         desabilita_nome_titular = False
         a_func_de = ''
         cargo_vago = ''
+        cp_nome_servidor = "Nome do Servidor"
 
 
     with st.form('form_ato', clear_on_submit=True):
@@ -33,7 +35,7 @@ def formulario_gerar_ato(dados_do_formulario):
         with coluna_1:
             dados_do_formulario['numero_ato'] = st.text_input('Informe o número do Ato')
             dados_do_formulario['numero_do_sei'] = st.text_input('Informe o número do Processo SEI')
-            dados_do_formulario['nome_servidor'] = st.text_input('Nome do Servidor')
+            dados_do_formulario['nome_servidor'] = st.text_input(cp_nome_servidor)
             dados_do_formulario['descricao_da_funcao'] = st.text_input("Descrição da função", placeholder="Ex: da Faculdade de Tecnologia", value=a_func_de)
             
             

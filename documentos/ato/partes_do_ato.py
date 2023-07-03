@@ -70,11 +70,20 @@ def ementa_ato(informacoes_do_formulario):
 def preambulo_ato(informacoes_do_formulario): # setor_responsavel, numero_do_sei
     numero_do_sei = informacoes_do_formulario['numero_do_sei']
     if informacoes_do_formulario['setor_responsavel'] == "DGP":
-        return preambulo['funcao']['html'].format(preambulo['funcao']['txt_dgp'].format(numero_do_sei))
+        if informacoes_do_formulario['dirigente_responsavel'] == "Decano(a) titular":
+            return preambulo['funcao']['html'].format(preambulo['funcao']['txt_dgp'].format(numero_do_sei))
+        else:
+            return preambulo['funcao']['html'].format(preambulo['funcao']['txt_dgp_substituto'].format(numero_do_sei))
     elif informacoes_do_formulario['setor_responsavel'] == "DGP/DAP":
-        return preambulo['funcao']['html'].format(preambulo['funcao']['txt_dgp_dap'].format(numero_do_sei))
+        if informacoes_do_formulario['dirigente_responsavel'] == "Diretor(a) titular":
+            return preambulo['funcao']['html'].format(preambulo['funcao']['txt_dgp_dap'].format(numero_do_sei))
+        else:
+            return preambulo['funcao']['html'].format(preambulo['funcao']['txt_dgp_dap_susbstituto'].format(numero_do_sei))
     elif informacoes_do_formulario['setor_responsavel'] == "REITORIA":
-        return preambulo['funcao']['html'].format(preambulo['funcao']['txt_reitoria'].format(numero_do_sei))
+        if informacoes_do_formulario['dirigente_responsavel'] == "Reitor(a)":
+            return preambulo['funcao']['html'].format(preambulo['funcao']['txt_reitoria'].format(numero_do_sei))
+        else:
+            return preambulo['funcao']['html'].format(preambulo['funcao']['txt_reitoria_substituto'].format(numero_do_sei))
     else:
         return preambulo['funcao']['html'].format(preambulo['funcao']['txt_erro'].format(numero_do_sei))
     
