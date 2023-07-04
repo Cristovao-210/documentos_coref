@@ -1,6 +1,6 @@
-import streamlit as st
 from documentos.ato.partes_do_ato import *
 from auxiliares.funcoes import *
+import re
 
 
 def gerar_ato(formulario):
@@ -48,7 +48,14 @@ def gerar_ato(formulario):
         <hr>
         </div>
         </html>''')
-    baixar_formulario(_nome_arquivo_)    
+    baixar_formulario(_nome_arquivo_)
+    numero = gerar_documento_publicacao(formulario['numero_ato'], formulario['ano_do_ato'])
+    inicio = _texto_ato_.find('>') + 2
+    texto_print = f"""{numero} - {_texto_ato_[inicio:].replace('</p>', '').lstrip()}"""
+    texto_publ = {'Texto_Publicação': texto_print}
+    st.markdown(texto_publ['Texto_Publicação'])
+    
+
 
 
 

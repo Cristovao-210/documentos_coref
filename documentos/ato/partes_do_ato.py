@@ -21,7 +21,6 @@ def ementa_ato(informacoes_do_formulario):
 
     categoria_funcional = informacoes_do_formulario['categoria_funcional']
     if categoria_funcional == "Outros (Usar campo 'Nome do Servidor')":
-
         categoria_funcional = ''
     nome_servidor = informacoes_do_formulario['nome_servidor'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )
     descricao_da_funcao = informacoes_do_formulario["descricao_da_funcao"].title().replace("Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )
@@ -165,7 +164,6 @@ def texto_do_ato(informacoes_do_formulario):
             return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['substituicao'].format(categoria_funcional, nome_servidor, nome_da_funcao,
                                                                                                          motivo_do_afastamento, dt_inicial_substituicao,
                                                                                                          dt_final_substituicao, servidor_a_ser_substituido))
-
     elif informacoes_do_formulario['tipo_de_ato'] == "FCC não remunerada":
         if informacoes_do_formulario['tipo_nao_remunerada'] == 'Designação':
             return texto_ato['funcao']['html'].format(texto_ato['funcao']['txt_fccs']['nao_remunerada']['designacao'].format(categoria_funcional, nome_servidor, nome_da_funcao))

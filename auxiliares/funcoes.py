@@ -21,6 +21,14 @@ def baixar_formulario(form_gerado):
     with pos_btn_3:
         pass
     os.remove(form_gerado)
+
+
+# gerar word
+def gerar_documento_publicacao(num_ato, ano_ato):
+    
+    _numero_ato_ = f'Nº {num_ato}/{ano_ato}'
+    return _numero_ato_
+    
     
 
 # função para deixar data recebida no formato necessário
