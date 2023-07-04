@@ -1,12 +1,6 @@
 
 ################################################### ATOS DE FUNÇÃO ############################################################
 
-# BASE DO ATO
-
-documento_base = {}
-
-#==============================================================================================================================
-# EPIGRAFE
 epigrafe = {
             
     'html': '<p style="font-size:13pt;font-family:Calibri;text-align:center;text-transform:uppercase;word-wrap:normal;">{0}</p>',
@@ -16,11 +10,7 @@ epigrafe = {
     'txt_erro': 'ERRO: NENHUM SETOR RESPONSÁVEL SELECIONADO'
 
 }
-#teste_epigaraf = epigrafe['html'].format(epigrafe['txt_reitoria'].format('2012/2023'))
-
 #==============================================================================================================================
-# EMENTA
-
 ementa = {
 
     'funcao':{
@@ -58,16 +48,13 @@ ementa = {
             'dispensa': 'Dispensa {0} {1} da função de {2} ({3}).', #em/do 
             'substituicao': 'Designa {0} {1} para substituir {2} ({3}).',# em/do 
             'nao_remunerada': {
-                'designacao':'Designa {0} {1} para exercer a função não remunerada de {2} em/do {3}.', # em/do -> colocar no campo de descrição do curso
-                'dispensa': 'Dispensa {0} {1} da função não remunerada de {2} em/do {3}.'
+                'designacao':'Designa {0} {1} para exercer a função não remunerada de {2}.', # em/do -> colocar no campo de descrição do curso
+                'dispensa': 'Dispensa {0} {1} da função não remunerada de {2}.'
             }
         },
         'txt_erro': 'ERRO: Nenhum Tipo de ato selecionado.'
     }    
 }
-#teste_ementa = ementa['funcao']['html'].format(ementa['funcao']['txt_erro'])
-# ementa['funcao']['html'].format(ementa['funcao']['txt_fgs']['substituicao'].format('a Docente', 'Maria Lúcia', 'Menina linda', 'FG-03'))
- 
 #==============================================================================================================================
 preambulo = {
 
@@ -99,19 +86,7 @@ preambulo = {
         'txt_erro': 'ERRO: Nenhum Tipo de Setor Responsável selecionado.'
     }    
 } 
-    
-    
-   
 #==============================================================================================================================
-# texto_ato = {
-
-#         'funcao':{
-#             'html': '''
-#                  <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">
-#                     {0}
-#                 </p> '''
-#         }
-# }
 
 texto_ato = {
 
@@ -121,59 +96,39 @@ texto_ato = {
                     {0}
                 </p> ''',
                 'txt_cds': {    
-                    # 0-categoria_cargo (docente/servidor) 1-nome, 2-nome_COORDENAÇÃO/DIREÇÃO, 3-numero_cd, 4 varia conforme o genero do servidor
                     'nomeacao': '''Nomear, com mandato de 4 (quatro) anos, {0} {1} para exercer a função de {2} ({3}){4}''', 
-
-                    'exoneracao': 'Exonerar {0} {1} da função de {2} ({3}){4}', # , por término de mandato
-
-                    # 4 - data inicio substituição / 5 - data fim substituição / 7 - da titular nome_titular.
-                    'substituicao':'Nomear {0} {1} para substituir {2} ({3}) durante o período de {4}, de {5} a {6}, {7}.', # durante período de vacância da função gratificada
-
+                    'exoneracao': 'Exonerar {0} {1} da função de {2} ({3}){4}',
+                    'substituicao':'Nomear {0} {1} para substituir {2} ({3}) durante o período de {4}, de {5} a {6}, {7}.', 
                     'substituicao_vago':'Nomear {0} {1} para substituir {2} ({3}) {4}, de {5} a {6}.',
-
-                    # 4 - data inicio recondução
-                    'reconducao':'''Reconduzir, a partir de {4}, {0} {1} para exercer a função de {2} ({3}), com mandato de 4 (quatro) anos.'''
+                    'reconducao':'''Reconduzir, a partir de {0}, {1} {2} para exercer a função de {3} ({4}), com mandato de 4 (quatro) anos.'''
                 },
                 'txt_fgs': {
-
                     'designacao': 'Designar {0} {1} para exercer a função de {2} ({3}).',
                     'dispensa': 'Dispensar {0} {1} da função de {2} ({3}).',
-
-                    # 4 - razão do afastamento / # 5 - data inicio substituição / 6 - data fim substituição / 7 - Nome de quem vai ser substituído
                     'substituicao': '''Designar {0} {1} para substituir {2} ({3}) durante o período de {4}, de {5} a {6}, {7}.''',
-
                     'substituicao_vago': '''Designar {0} {1} para substituir {2} ({3}) {4}, de {5} a {6}.'''
                 },
-                'txt_fccs': {
-                    
-                    # 2 - Coordenador de grad/pos + Nome do curso
+                'txt_fccs': {         
                     'designacao': 'Designar, para mandato de 2 (dois) anos, {0} {1} para exercer a função de {2} (FCC).',
-
                     'dispensa': 'Dispensar, por término de mandato, {0} {1} da função de {2} (FCC).',
-
-                    # 2 - Coordenador de grad/pos + Nome do curso / 3 - Razão do afastamento /# 4 - data inicio substituição / 5 - data fim substituição / 6 - Nome de quem vai ser substituído
                     'substituicao': '''Designar {0} {1} para substituir {2} (FCC), durante o período de {3}, de {4} a {5}, {6}.''',
-
                     'substituicao_vago': '''Designar {0} {1} para substituir {2} (FCC) {3}, de {4} a {5}.''',
-
                     'nao_remunerada': {
-
-                        # 2 - Coordenador de grad/pos + Nome do curso
                         'designacao':'''
-                        Art. 1º  Designar {0} {1} para exercer a função não remunerada de {2}.
-                        <br>
-                        Art. 2º  Este Ato entra em vigor na data de sua publicação no Boletim de Atos Oficiais da UnB (BAO).''', # em/do -> colocar no campo de descrição do curso
-
+                                Art. 1º  Designar {0} {1} para exercer a função não remunerada de {2}.
+                                <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">
+                                Art. 2º  Este Ato entra em vigor na data de sua publicação no Boletim de Atos Oficiais da UnB (BAO).
+                                </p>''', 
                         'dispensa': '''
-                        Art. 1º  Dispensa {0} {1} da função não remunerada de {2}.
-                        <br>
-                        Art. 2º  Este Ato entra em vigor na data de sua publicação no Boletim de Atos Oficiais da UnB (BAO).'''
+                                Art. 1º  Dispensa {0} {1} da função não remunerada de {2}.
+                                <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">
+                                Art. 2º  Este Ato entra em vigor na data de sua publicação no Boletim de Atos Oficiais da UnB (BAO).
+                                </p>'''
                     }
                 },
                 'txt_erro': 'ERRO: Nenhum Tipo de ato selecionado.'
         }
 }
-
 #==============================================================================================================================
 dirigentes = {
               'html':'<p style="font-size:12pt;font-family:Calibri;text-align:center;word-wrap:normal;margin:6pt;">{0}</p>',
@@ -194,14 +149,6 @@ dirigentes = {
               }
 
 }
-
 #==============================================================================================================================
-
-
-
-
-# with open("file.html", "w", encoding='utf-8') as f:
-#     f.write(f'{teste_epigaraf} {teste_ementa}')
-
 
 

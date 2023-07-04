@@ -30,6 +30,9 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                     # detalhe em substituição de cd - 
                     if dados_do_formulario["tipo_de_ato"] == "Substituição de CD" or dados_do_formulario["tipo_de_ato"] == "Substituição de FG" or dados_do_formulario["tipo_de_ato"] == "Substituição de FCC":
                         dados_do_formulario['cargo_vago'] = st.sidebar.radio("É de Cargo Vago? ", ("Sim", "Não"))
+                    # detalhe não remunerada
+                    if dados_do_formulario["tipo_de_ato"] == "FCC não remunerada":
+                        dados_do_formulario['tipo_nao_remunerada'] = st.sidebar.radio("Tipo", ("Designação", "Dispensa"))
                     
                     formulario_gerar_ato(dados_do_formulario)
 

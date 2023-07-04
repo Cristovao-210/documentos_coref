@@ -38,7 +38,6 @@ def formulario_gerar_ato(dados_do_formulario):
             dados_do_formulario['nome_servidor'] = st.text_input(cp_nome_servidor)
             dados_do_formulario['descricao_da_funcao'] = st.text_input("Descrição da função", placeholder="Ex: da Faculdade de Tecnologia", value=a_func_de)
             
-            
         with coluna_2:
             dados_do_formulario['ano_do_ato'] = st.text_input('Ano do Ato', value=ano_atual)
             dados_do_formulario['categoria_funcional'] = st.selectbox("Catergoria Funcional", lista_de_categorias_funcionais)
@@ -51,7 +50,6 @@ def formulario_gerar_ato(dados_do_formulario):
                 dados_do_formulario['nome_da_funcao'] = st.selectbox("Nome da Função", lista_de_nome_funcoes_generos)
             else:
                 dados_do_formulario['nome_da_funcao'] = st.selectbox("Nome da Função", lista_de_nome_funcoes)     
-
             if "CD" in tp_ato:
                 dados_do_formulario['tipo_de_funcao'] = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('cds'))
             elif "FG" in tp_ato:
@@ -74,7 +72,7 @@ def formulario_gerar_ato(dados_do_formulario):
             dados_do_formulario['genero'] = "Masculino"
         elif tp_ato == "Recondução de CD":        
             # Recondução
-            dados_do_formulario['data_reconducao'] = "31/07/2023"
+            dados_do_formulario['data_reconducao'] = st.date_input("Início da Recondução: ")
 
         # ASSINATURA DO ATO
         if setor_responsavel == "DGP":
@@ -91,7 +89,6 @@ def formulario_gerar_ato(dados_do_formulario):
             pass
         with coluna_btn_2:
             btn_gera_ato = st.form_submit_button('GRAVAR INFORMAÇÕES DO ATO')
-            
         with coluna_btn_3:
             pass
 
