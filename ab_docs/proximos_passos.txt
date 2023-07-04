@@ -1,9 +1,7 @@
 
-**Arquivo partes_do_ato:
-    1 - Fazer configuração das strings recebidas no formulário
 
-**Arquivo compor_arquivo_atos:
+**Criar função para gerar o word
 
-**Arquivo formulario_atos:
-    1 - Verificar nomenclaturas do formulário
+*** FAZER TESTE GERAL DE TODAS AS FUNCIONALIDADES
+    
     

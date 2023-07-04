@@ -26,9 +26,10 @@ def ementa_ato(informacoes_do_formulario):
     if categoria_funcional == "Outros (Usar campo 'Nome do Servidor')":
         categoria_funcional = ''
     # 1-nome
-    nome_servidor = informacoes_do_formulario['nome_servidor']
+    nome_servidor = informacoes_do_formulario['nome_servidor'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )
     # 2-nome_COORDENAÇÃO/DIREÇÃO, (Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
-    nome_da_funcao = f'{informacoes_do_formulario["nome_da_funcao"]} {informacoes_do_formulario["descricao_da_funcao"]}' if informacoes_do_formulario["nome_da_funcao"][0:6] != "Outros" else informacoes_do_formulario["descricao_da_funcao"]
+    descricao_da_funcao = informacoes_do_formulario["descricao_da_funcao"].title().replace("Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )
+    nome_da_funcao = f'{informacoes_do_formulario["nome_da_funcao"]} {descricao_da_funcao}' if informacoes_do_formulario["nome_da_funcao"][0:6] != "Outros" else descricao_da_funcao
     # 3- cd-1 a 4,fg-1 a 3,fcc
     tipo_de_funcao = informacoes_do_formulario['tipo_de_funcao']
     # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
@@ -99,9 +100,10 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
     if categoria_funcional == "Outros (Usar campo 'Nome do Servidor')":
         categoria_funcional = ''
     # 1-nome
-    nome_servidor = informacoes_do_formulario['nome_servidor']
+    nome_servidor = informacoes_do_formulario['nome_servidor'].title().replace(" Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )
     # 2-nome_COORDENAÇÃO/DIREÇÃO, (Coordenador(a) de Pós-graduação/Coordenador(a) de Graduação), 3-descrição do curso a ser coordenado
-    nome_da_funcao = f'{informacoes_do_formulario["nome_da_funcao"]} {informacoes_do_formulario["descricao_da_funcao"]}' if informacoes_do_formulario["nome_da_funcao"][0:6] != "Outros" else informacoes_do_formulario["descricao_da_funcao"]
+    descricao_da_funcao = informacoes_do_formulario["descricao_da_funcao"].title().replace("Da ", " da ").replace(" Do ", " do ").replace(" De ", " de ").replace(" Di ", " di ").replace(" Du ", " du" )
+    nome_da_funcao = f'{informacoes_do_formulario["nome_da_funcao"]} {descricao_da_funcao}' if informacoes_do_formulario["nome_da_funcao"][0:6] != "Outros" else informacoes_do_formulario["descricao_da_funcao"]
     # 3- cd-1 a 4,fg-1 a 3,fcc
     tipo_de_funcao = informacoes_do_formulario['tipo_de_funcao']
 
