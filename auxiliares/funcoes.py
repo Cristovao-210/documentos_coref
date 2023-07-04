@@ -2,7 +2,6 @@ import streamlit as st
 import os
 
 
-
 #Baixar Arquivo
 def baixar_formulario(form_gerado):
     st.markdown('<p style="text-align: center; background: lightgreen">Clique no botão abaixo para fazer download do documento</p>', unsafe_allow_html=True)

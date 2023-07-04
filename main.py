@@ -35,8 +35,3 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                         dados_do_formulario['tipo_nao_remunerada'] = st.sidebar.radio("Tipo", ("Designação", "Dispensa"))
                     
                     formulario_gerar_ato(dados_do_formulario)
-
-
-# verificando salvamento das informações
-#st.write(dados_do_formulario)
-    

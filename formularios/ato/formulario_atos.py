@@ -28,7 +28,6 @@ def formulario_gerar_ato(dados_do_formulario):
         cargo_vago = ''
         cp_nome_servidor = "Nome do Servidor"
 
-
     with st.form('form_ato', clear_on_submit=True):
 
         coluna_1, coluna_2 = st.columns(2)
@@ -37,7 +36,7 @@ def formulario_gerar_ato(dados_do_formulario):
             dados_do_formulario['numero_do_sei'] = st.text_input('Informe o número do Processo SEI')
             dados_do_formulario['nome_servidor'] = st.text_input(cp_nome_servidor)
             dados_do_formulario['descricao_da_funcao'] = st.text_input("Descrição da função", placeholder="Ex: da Faculdade de Tecnologia", value=a_func_de)
-            
+      
         with coluna_2:
             dados_do_formulario['ano_do_ato'] = st.text_input('Ano do Ato', value=ano_atual)
             dados_do_formulario['categoria_funcional'] = st.selectbox("Catergoria Funcional", lista_de_categorias_funcionais)
@@ -58,10 +57,7 @@ def formulario_gerar_ato(dados_do_formulario):
                 dados_do_formulario['tipo_de_funcao'] = st.selectbox("Tipo de Função", dict_de_tipos_funcoes.get('fccs'))
             
         # SUBSTITUIÇÃO / RECONDUÇÃO
-        if tp_ato == "Substituição de CD" or tp_ato == "Substituição de FG" or tp_ato == "Substituição de FCC":    
-            # quando substituição #['a Coordenadora', 'o Coordenador', 'o Diretor', 'a Diretora', 'outros']
-            #dados_do_formulario['cargo_a_ser_substituido'] = st.selectbox("Cargo a ser substituído", lista_de_nome_funcoes) # Concatenar com o nome da função]
-            
+        if tp_ato == "Substituição de CD" or tp_ato == "Substituição de FG" or tp_ato == "Substituição de FCC":            
             dados_do_formulario['motivo_do_afastamento'] = st.text_input("Durante o período de: ", value=is_cg_vago, placeholder="Ex.: durante o período de Férias, Licença Capacitação, etc")
             dados_do_formulario['servidor_a_ser_substituido'] = st.text_input("Nome do Titular a ser substituído: ", disabled=desabilita_nome_titular, value='')
             if is_cg_vago == '':
@@ -70,8 +66,8 @@ def formulario_gerar_ato(dados_do_formulario):
             dados_do_formulario['data_inicial_substuicao'] = st.date_input("Início da Substituição: ")
             dados_do_formulario['data_final_substuicao'] = st.date_input("Término da Substituição: ")
             dados_do_formulario['genero'] = "Masculino"
+         # Recondução
         elif tp_ato == "Recondução de CD":        
-            # Recondução
             dados_do_formulario['data_reconducao'] = st.date_input("Início da Recondução: ")
 
         # ASSINATURA DO ATO
@@ -84,6 +80,8 @@ def formulario_gerar_ato(dados_do_formulario):
 
         # Quebra de linha / botão para gravar informações
         st.write("") 
+
+        # Botão para gerar documento
         coluna_btn_1, coluna_btn_2, coluna_btn_3 = st.columns([2,3,1])
         with coluna_btn_1:
             pass
@@ -92,7 +90,7 @@ def formulario_gerar_ato(dados_do_formulario):
         with coluna_btn_3:
             pass
 
-
+    # Verificando o clique
     if btn_gera_ato:
         gerar_ato(dados_do_formulario)
         
