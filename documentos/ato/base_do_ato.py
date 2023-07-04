@@ -1,5 +1,6 @@
 import streamlit as st
 from documentos.ato.partes_do_ato import *
+from auxiliares.funcoes import *
 
 
 def gerar_ato(formulario):
@@ -9,8 +10,9 @@ def gerar_ato(formulario):
     _preambulo_ = preambulo_ato(formulario)
     _texto_ato_ = texto_do_ato(formulario)
     _assinatura_ = assinatura_ato(formulario)
+    _nome_arquivo_ = f"Ato_{formulario['nome_servidor']}.html"
     # escrevendo partes no arquivo
-    with open("file.html", "w", encoding='utf-8') as f:
+    with open(_nome_arquivo_, "w", encoding='utf-8') as f:
         f.write('''
         <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
         <html lang="pt-br" >
@@ -46,6 +48,7 @@ def gerar_ato(formulario):
         <hr>
         </div>
         </html>''')
+    baixar_formulario(_nome_arquivo_)    
 
 
 

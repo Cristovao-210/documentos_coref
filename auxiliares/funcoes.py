@@ -5,22 +5,23 @@ import os
 
 #Baixar Arquivo
 def baixar_formulario(form_gerado):
-    pos_btn_1, pos_btn_2, pos_btn_3 = st.columns([3,3,1])
+    st.markdown('<p style="text-align: center; background: lightgreen">Clique no botão abaixo para fazer download do documento</p>', unsafe_allow_html=True)
+    pos_btn_1, pos_btn_2, pos_btn_3 = st.columns([3,3,2])
     with pos_btn_1:
         pass
     with pos_btn_2:
        try:
-            with open(str(form_gerado[0]), "rb") as file:
+            with open(str(form_gerado), "rb") as file:
                 st.download_button(
                     label="BAIXAR DOCUMENTO",
                     data=file,
-                    file_name=form_gerado[0],
+                    file_name=form_gerado,
                     mime="text/html")
        except:
             st.error("ARQUIVO NÃO LOCALIZADO! REPITA O PROCESSO.")
     with pos_btn_3:
         pass
-    os.remove(form_gerado[0])
+    os.remove(form_gerado)
     
 
 # função para deixar data recebida no formato necessário

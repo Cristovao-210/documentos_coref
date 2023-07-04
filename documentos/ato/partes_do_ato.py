@@ -112,7 +112,6 @@ def texto_do_ato(informacoes_do_formulario): # tipo_ato, tipo_funcao
         dt_inicial_substituicao = data_convertida_br(str(informacoes_do_formulario['data_inicial_substuicao']))
         dt_final_substituicao = data_convertida_br(str(informacoes_do_formulario['data_final_substuicao']))
         servidor_a_ser_substituido = informacoes_do_formulario['servidor_a_ser_substituido']
-
         
     # detalhe em nomeação de cd
     if tpd_ato == "Nomeação de CD":
