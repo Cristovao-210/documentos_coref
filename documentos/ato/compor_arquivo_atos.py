@@ -1,8 +1,7 @@
 
 ################################################### ATOS DE FUNÇÃO ############################################################
-
 epigrafe = {
-            
+    
     'html': '<p style="font-size:13pt;font-family:Calibri;text-align:center;text-transform:uppercase;word-wrap:normal;">{0}</p>',
     'txt_dgp': 'ATO DO DECANATO DE GESTÃO DE PESSOAS Nº {0}',
     'txt_dgp_dap':'ATO DA DIRETORIA DE ADMINISTRAÇÃO DE PESSOAS Nº {0}',
@@ -83,7 +82,6 @@ preambulo = {
     }    
 } 
 #==============================================================================================================================
-
 texto_ato = {
 
         'funcao': {

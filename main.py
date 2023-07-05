@@ -19,7 +19,7 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                 if dados_do_formulario["tipo_de_ato"] != "":
                     # detalhe em nomeação de cd
                     if dados_do_formulario["tipo_de_ato"] == "Nomeação de CD":
-                        dados_do_formulario["ja_possui_funcao"] = st.sidebar.radio("Já possuí Função?", ("Não", "Sim"), )
+                        dados_do_formulario["ja_possui_funcao"] = st.sidebar.radio("Já possuí Função?", ("Não", "Sim"))
                         if dados_do_formulario['ja_possui_funcao'] == "Sim":
                             dados_do_formulario['genero'] = st.sidebar.radio("Informe o Gênero", ("Masculino", "Feminino"))
                         else:
@@ -33,5 +33,4 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                     # detalhe não remunerada
                     if dados_do_formulario["tipo_de_ato"] == "FCC não remunerada":
                         dados_do_formulario['tipo_nao_remunerada'] = st.sidebar.radio("Tipo", ("Designação", "Dispensa"))
-                    
                     formulario_gerar_ato(dados_do_formulario)

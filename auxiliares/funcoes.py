@@ -1,5 +1,5 @@
 import streamlit as st
-import os
+import os 
 
 
 #Baixar Arquivo
@@ -22,10 +22,8 @@ def baixar_formulario(form_gerado):
         pass
     os.remove(form_gerado)
 
-
 # gerar word
-def gerar_documento_publicacao(num_ato, ano_ato, texto):
-    
+def gerar_documento_publicacao(num_ato, ano_ato, texto):  
     _numero_ato_ = f'Nº {num_ato}/{ano_ato}'
     inicio = texto.find('>') + 1
     texto_print = f"""{_numero_ato_} - {texto[inicio:].replace('</p>', '').lstrip()}"""
@@ -34,9 +32,6 @@ def gerar_documento_publicacao(num_ato, ano_ato, texto):
     with open('atos_gerados.txt', 'a', encoding='utf-8') as a:
         a.write(f"{texto_publ['Texto_para_Publicação']}\n")
     
-    
-    
-
 # função para deixar data recebida no formato necessário
 def data_convertida_br(dt): # recebe uma String
   dia = dt[8:]
