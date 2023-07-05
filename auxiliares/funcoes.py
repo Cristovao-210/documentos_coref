@@ -24,10 +24,16 @@ def baixar_formulario(form_gerado):
 
 
 # gerar word
-def gerar_documento_publicacao(num_ato, ano_ato):
+def gerar_documento_publicacao(num_ato, ano_ato, texto):
     
     _numero_ato_ = f'Nº {num_ato}/{ano_ato}'
-    return _numero_ato_
+    inicio = texto.find('>') + 1
+    texto_print = f"""{_numero_ato_} - {texto[inicio:].replace('</p>', '').lstrip()}"""
+    texto_publ = {'Texto_para_Publicação': texto_print}
+    st.write(texto_publ)  #['Texto_Publicação']
+    with open('atos_gerados.txt', 'a', encoding='utf-8') as a:
+        a.write(f"{texto_publ['Texto_para_Publicação']}\n")
+    
     
     
 

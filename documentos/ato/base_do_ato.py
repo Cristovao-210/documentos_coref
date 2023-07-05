@@ -48,12 +48,10 @@ def gerar_ato(formulario):
         <hr>
         </div>
         </html>''')
+    gerar_documento_publicacao(formulario['numero_ato'], formulario['ano_do_ato'], _texto_ato_)
     baixar_formulario(_nome_arquivo_)
-    numero = gerar_documento_publicacao(formulario['numero_ato'], formulario['ano_do_ato'])
-    inicio = _texto_ato_.find('>') + 2
-    texto_print = f"""{numero} - {_texto_ato_[inicio:].replace('</p>', '').lstrip()}"""
-    texto_publ = {'Texto_Publicação': texto_print}
-    st.markdown(texto_publ['Texto_Publicação'])
+    
+    
     
 
 

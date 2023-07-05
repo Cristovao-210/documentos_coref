@@ -20,9 +20,7 @@ ementa = {
                     <tr>
                         <td style="width: 403px; text-align: left;">&nbsp;</td>
                         <td style="width: 379px; text-align: left;">
-                            <p style="font-size:12pt;font-family:Calibri;text-align:justify;word-wrap:normal;text-indent:0;margin:6pt;">
-                            {0}
-                            </p>
+                            <p style="font-size:12pt;font-family:Calibri;text-align:justify;word-wrap:normal;text-indent:0;margin:6pt;">{0}</p>
                         </td>
                     </tr>
                 </tbody>
@@ -60,9 +58,7 @@ preambulo = {
 
     'funcao':{
         'html': '''
-            <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">
-                {0}
-            </p> ''',
+            <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">{0}</p> ''',
         'txt_dgp': '''A DECANA DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA, 
                     no uso de suas atribuições legais, conferidas pelo Ato da Reitoria nº .72,
                     publicado no DOU n. 13, de 20 de janeiro de 2021, seção 2, página 24,
@@ -92,9 +88,7 @@ texto_ato = {
 
         'funcao': {
             'html': '''
-                 <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">
-                    {0}
-                </p> ''',
+                 <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">{0}</p> ''',
                 'txt_cds': {    
                     'nomeacao': '''Nomear, com mandato de 4 (quatro) anos, {0} {1} para exercer a função de {2} ({3}){4}''', 
                     'exoneracao': 'Exonerar {0} {1} da função de {2} ({3}){4}',

@@ -3,7 +3,7 @@ from auxiliares.var_globais import *
 from formularios.ato.formulario_atos import *
 
 st.set_page_config(page_title="Atos UnB")
-st.subheader("GERADOR DE DOCUMENTOS OFICIAIS")
+st.markdown("<h4 style='text-align: center; background: #B52E3A; color: white;'>GERADOR DE DOCUMENTOS OFICIAIS</h4>", unsafe_allow_html=True)
 
 dados_do_formulario = {}
 dados_do_formulario['documento_selecionado'] = st.sidebar.selectbox("Tipo de Documento", lista_de_documentos)
