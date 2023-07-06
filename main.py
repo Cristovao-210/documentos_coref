@@ -10,6 +10,10 @@ dados_do_formulario = {}
 dados_do_formulario['documento_selecionado'] = st.sidebar.selectbox("Tipo de Documento", lista_de_documentos)
 
 if dados_do_formulario['documento_selecionado'] == "Ato":
+    # criando bando de dados
+    conectar = criar_conexao('atosgerados_db')
+    criar_db(conectar)
+    
     dados_do_formulario['acao_com_documento'] = st.sidebar.selectbox("Solicitação", ("", "Gerar Ato", "Preparar para Publicação"))
     if dados_do_formulario["acao_com_documento"] == 'Gerar Ato':
         dados_do_formulario['setor_responsavel'] = st.sidebar.selectbox("Setor Responsável", lista_de_setores)
@@ -35,6 +39,8 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                     if dados_do_formulario["tipo_de_ato"] == "FCC não remunerada":
                         dados_do_formulario['tipo_nao_remunerada'] = st.sidebar.radio("Tipo", ("Designação", "Dispensa"))
                     formulario_gerar_ato(dados_do_formulario)
-    if dados_do_formulario['acao_com_documento'] == "Preparar para Publicação":
+
+    elif dados_do_formulario['acao_com_documento'] == "Preparar para Publicação":
         
         st.markdown("<br><h6 style='text-align: center;'>Gerar documento para publicação</h6>", unsafe_allow_html=True)
+        

@@ -35,7 +35,7 @@ def data_convertida_br(dt): # recebe uma String
     return f'{dia}/{mes}/{ano}' # retorna uma String
   
 # gerar word
-def gerar_documento_publicacao(num_ato, ano_ato, texto, nome_tabela): 
+def gerar_documento_publicacao(num_ato, ano_ato, texto): 
 
     # posicionando inicio do texto
     inicio = texto.find('>') + 1 
@@ -50,6 +50,8 @@ def gerar_documento_publicacao(num_ato, ano_ato, texto, nome_tabela):
     texto_publ = {'Texto_para_Publicação': texto_print}
     st.write(texto_publ)
     ato_gravacao = {'data_emissao': data_atual, 'num_formatado': _numero_ato_, 'texto_do_ato_gravar': texto_gravar}
+    
+    return ato_gravacao
     
     
     # with open('atos_gerados.txt', 'a', encoding='utf-8') as a:

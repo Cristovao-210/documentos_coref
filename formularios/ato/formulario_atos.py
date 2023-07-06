@@ -94,6 +94,8 @@ def formulario_gerar_ato(dados_do_formulario):
     if btn_gera_ato:
         gerar_ato(dados_do_formulario)
         
+
+        
         
 
     

@@ -1,6 +1,7 @@
 from documentos.ato.partes_do_ato import *
 from auxiliares.funcoes import *
-import re
+from auxiliares.connection import *
+
 
 
 def gerar_ato(formulario):
@@ -48,7 +49,12 @@ def gerar_ato(formulario):
         <hr>
         </div>
         </html>''')
-    gerar_documento_publicacao(formulario['numero_ato'], formulario['ano_do_ato'], _texto_ato_)
+    # grando texto do ato no banco de dados    
+    dados_publicacao = gerar_documento_publicacao(formulario['numero_ato'], formulario['ano_do_ato'], _texto_ato_)
+    conectar = criar_conexao('atosgerados_db')
+    inserir_atos(conectar, 'atos_publicacao', dados_publicacao)
+
+    # botão para baixar o formulário
     baixar_formulario(_nome_arquivo_)
     
     

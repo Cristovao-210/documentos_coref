@@ -19,14 +19,17 @@ def inserir_atos(conexao, tabela, base_dados):
     with conexao.session as s:
         for dado in base_dados:
             s.execute(
-                f'INSERT INTO {tabela} (data_emissao, numero_formatado, texto_do_ato) VALUES (:chave, :valor);',
-                params=dict(chave=dado, valor=base_dados[dado])
+                f'INSERT INTO {tabela} (data_emissao, numero_formatado, texto_do_ato) VALUES (%s, %s, %s);',
+                params=base_dados[dado]
             )
         s.commit()
 
 # buscar atos na tabela
 def selecionar_atos(conexao, tabela, dt_emissao):
+    # listar atos
     with conexao.session as s:
         dict_atos = s.execute(f'select * from {tabela} where data_emissao = {dt_emissao}')
         st.dataframe(dict_atos)
+    
+    # gerar word
         
