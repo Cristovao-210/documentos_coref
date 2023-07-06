@@ -1,5 +1,7 @@
 import streamlit as st
 import os 
+import datetime
+from auxiliares.connection import *
 
 
 #Baixar Arquivo
@@ -21,17 +23,7 @@ def baixar_formulario(form_gerado):
     with pos_btn_3:
         pass
     os.remove(form_gerado)
-
-# gerar word
-def gerar_documento_publicacao(num_ato, ano_ato, texto):  
-    _numero_ato_ = f'Nº {num_ato}/{ano_ato}'
-    inicio = texto.find('>') + 1
-    texto_print = f"""{_numero_ato_} - {texto[inicio:].replace('</p>', '').lstrip()}"""
-    texto_publ = {'Texto_para_Publicação': texto_print}
-    st.write(texto_publ)  #['Texto_Publicação']
-    with open('atos_gerados.txt', 'a', encoding='utf-8') as a:
-        a.write(f"{texto_publ['Texto_para_Publicação']}\n")
-    
+   
 # função para deixar data recebida no formato necessário
 def data_convertida_br(dt): # recebe uma String
   dia = dt[8:]
@@ -41,3 +33,27 @@ def data_convertida_br(dt): # recebe uma String
     return ""
   else:
     return f'{dia}/{mes}/{ano}' # retorna uma String
+  
+# gerar word
+def gerar_documento_publicacao(num_ato, ano_ato, texto, nome_tabela): 
+
+    # posicionando inicio do texto
+    inicio = texto.find('>') + 1 
+
+    # coletando informações para gravar
+    data_atual = data_convertida_br(str(datetime.date.today()))
+    _numero_ato_ = f'Nº {num_ato}/{ano_ato}'
+    texto_gravar = texto[inicio:].replace('</p>', '').lstrip()
+
+    # mostrando texto do ato abaixo do formulário
+    texto_print = f"""{_numero_ato_} - {texto[inicio:].replace('</p>', '').lstrip()}"""
+    texto_publ = {'Texto_para_Publicação': texto_print}
+    st.write(texto_publ)
+    ato_gravacao = {'data_emissao': data_atual, 'num_formatado': _numero_ato_, 'texto_do_ato_gravar': texto_gravar}
+    
+    
+    # with open('atos_gerados.txt', 'a', encoding='utf-8') as a:
+    #     a.write(f"{texto_publ['Texto_para_Publicação']}\n")
+
+
+

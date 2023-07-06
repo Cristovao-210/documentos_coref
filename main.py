@@ -1,5 +1,6 @@
 import streamlit as st
 from auxiliares.var_globais import *
+from auxiliares.connection import *
 from formularios.ato.formulario_atos import *
 
 st.set_page_config(page_title="Atos UnB")
@@ -34,3 +35,6 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                     if dados_do_formulario["tipo_de_ato"] == "FCC não remunerada":
                         dados_do_formulario['tipo_nao_remunerada'] = st.sidebar.radio("Tipo", ("Designação", "Dispensa"))
                     formulario_gerar_ato(dados_do_formulario)
+    if dados_do_formulario['acao_com_documento'] == "Preparar para Publicação":
+        
+        st.markdown("<br><h6 style='text-align: center;'>Gerar documento para publicação</h6>", unsafe_allow_html=True)
