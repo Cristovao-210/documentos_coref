@@ -10,9 +10,6 @@ dados_do_formulario = {}
 dados_do_formulario['documento_selecionado'] = st.sidebar.selectbox("Tipo de Documento", lista_de_documentos)
 
 if dados_do_formulario['documento_selecionado'] == "Ato":
-    # criando bando de dados
-    conectar = criar_conexao('atosgerados_db')
-    criar_db(conectar)
     
     dados_do_formulario['acao_com_documento'] = st.sidebar.selectbox("Solicitação", ("", "Gerar Ato", "Preparar para Publicação"))
     if dados_do_formulario["acao_com_documento"] == 'Gerar Ato':

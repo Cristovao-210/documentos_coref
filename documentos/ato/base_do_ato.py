@@ -51,11 +51,15 @@ def gerar_ato(formulario):
         </html>''')
     # grando texto do ato no banco de dados    
     dados_publicacao = gerar_documento_publicacao(formulario['numero_ato'], formulario['ano_do_ato'], _texto_ato_)
-    conectar = criar_conexao('atosgerados_db')
-    inserir_atos(conectar, 'atos_publicacao', dados_publicacao)
 
     # botão para baixar o formulário
     baixar_formulario(_nome_arquivo_)
+
+    # criando bando de dados, tabela e inserção
+    conectar = criar_conexao('atosgerados_db')
+    inserir_atos(conectar, 'atos_publicacao', dados_publicacao)
+
+    
     
     
     
