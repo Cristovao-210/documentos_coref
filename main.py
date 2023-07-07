@@ -52,10 +52,10 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                 st.info("Nenhum Ato foi registrado na data selecionada.")
             else:
                 st.write(dicionario_publicacao)
-                for idx, key in zip(enumerate(dicionario_publicacao), dicionario_publicacao):
-                    #st.text(key)
-                    st.text(idx)
-                    #st.text(dicionario_publicacao[dtf][idx])
+                for pos in range(len(dicionario_publicacao)):
+                    for idx in dicionario_publicacao:
+                        st.text(dicionario_publicacao['TEXTO'])
+                        #st.text(dicionario_publicacao[dtf][idx])
             
            
            
