@@ -1,6 +1,7 @@
 import streamlit as st
 from auxiliares.var_globais import *
 from auxiliares.connection import *
+from auxiliares.funcoes import *
 from formularios.ato.formulario_atos import *
 
 st.set_page_config(page_title="Atos UnB")
@@ -40,4 +41,17 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
     elif dados_do_formulario['acao_com_documento'] == "Preparar para Publicação":
         
         st.markdown("<br><h6 style='text-align: center;'>Gerar documento para publicação</h6>", unsafe_allow_html=True)
+
+        # criando bando de dados, tabela e inserção
+        conectar = criar_conexao('atosgerados_db')
+        data_publicacao = st.date_input('Informe a data de emissão do ato: ')
+        if data_publicacao != "":
+            data_publicacao = data_convertida_br(str(data_publicacao))
+            dicionario_publicacao = selecionar_atos(conectar,'atos_publicacao', data_publicacao)
+            for dp in dicionario_publicacao:
+                print(dp)
+           
+            
+            
+            
         

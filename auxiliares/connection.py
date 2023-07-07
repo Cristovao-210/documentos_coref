@@ -27,11 +27,16 @@ def inserir_atos(conexao, tabela, base_dados):
         s.commit()
 
 # buscar atos na tabela
-def selecionar_atos(conexao, tabela, dt_emissao):
+def selecionar_atos(conexao, tabela, dt_emissao):# , 
     # listar atos
     with conexao.session as s:
-        dict_atos = s.execute(f'select * from {tabela} where data_emissao = {dt_emissao}')
-        st.dataframe(dict_atos)
+        dict_atos = s.execute(f'SELECT dataemissao AS EMISSAO, numeroformatado AS NUMERO, textodoato AS TEXTO from {tabela} where dataemissao = "{dt_emissao}"')
+        df = st.dataframe(dict_atos, hide_index=True)
+        return dict_atos
+        
+        
+
+        
     
     # gerar word
         
