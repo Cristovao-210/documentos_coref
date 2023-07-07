@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 # criando conexão
 def criar_conexao(_nome_do_banco_): # 'atosgerados_db'
@@ -31,8 +32,10 @@ def selecionar_atos(conexao, tabela, dt_emissao):# ,
     # listar atos
     with conexao.session as s:
         dict_atos = s.execute(f'SELECT dataemissao AS EMISSAO, numeroformatado AS NUMERO, textodoato AS TEXTO from {tabela} where dataemissao = "{dt_emissao}"')
-        df = st.dataframe(dict_atos, hide_index=True)
-        return dict_atos
+        df = pd.DataFrame(dict_atos)
+        indice_vazio = [''] * len(df)
+        df.index = indice_vazio
+        return df
         
         
 

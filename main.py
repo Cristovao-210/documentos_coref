@@ -42,14 +42,22 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
         
         st.markdown("<br><h6 style='text-align: center;'>Gerar documento para publicação</h6>", unsafe_allow_html=True)
 
-        # criando bando de dados, tabela e inserção
-        conectar = criar_conexao('atosgerados_db')
+        # criando bando de dados, tabela, inserção e busca
         data_publicacao = st.date_input('Informe a data de emissão do ato: ')
+        conectar = criar_conexao('atosgerados_db')
         if data_publicacao != "":
             data_publicacao = data_convertida_br(str(data_publicacao))
             dicionario_publicacao = selecionar_atos(conectar,'atos_publicacao', data_publicacao)
-            for dp in dicionario_publicacao:
-                print(dp)
+            if dicionario_publicacao.empty:
+                st.info("Nenhum Ato foi registrado na data selecionada.")
+            else:
+                st.write(dicionario_publicacao)
+                for idx, key in zip(enumerate(dicionario_publicacao), dicionario_publicacao):
+                    #st.text(key)
+                    st.text(idx)
+                    #st.text(dicionario_publicacao[dtf][idx])
+            
+           
            
             
             
