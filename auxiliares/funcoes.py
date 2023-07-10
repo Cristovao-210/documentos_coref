@@ -42,9 +42,9 @@ def gerar_documento_publicacao(num_ato, ano_ato, texto):
     # coletando informações para gravar
     data_atual = data_convertida_br(str(datetime.date.today()))
     _numero_ato_ = f'Nº {num_ato}/{ano_ato}'
-    texto_gravar = texto[inicio:].replace('</p>', '').lstrip()
+    texto_gravar = texto[inicio:].replace('<p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">', '').replace('</p>', '').lstrip()
     # mostrando texto do ato abaixo do formulário
-    texto_print = f"""{_numero_ato_} - {texto[inicio:].replace('</p>', '').lstrip()}"""
+    texto_print = f"""{_numero_ato_} - {texto_gravar}"""
     texto_publ = {'Texto_para_Publicação': texto_print}
     st.write(texto_publ)
     ato_gravacao = {'data_emissao': data_atual, 'num_formatado': _numero_ato_, 'texto_do_ato_gravar': texto_gravar}

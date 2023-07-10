@@ -3,6 +3,7 @@ from auxiliares.var_globais import *
 from auxiliares.connection import *
 from auxiliares.funcoes import *
 from formularios.ato.formulario_atos import *
+from docx import Document
 
 st.set_page_config(page_title="Atos UnB")
 st.markdown("<h4 style='text-align: center; background: #B52E3A; color: white;'>GERADOR DE DOCUMENTOS OFICIAIS</h4>", unsafe_allow_html=True)
@@ -52,13 +53,16 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                 st.info("Nenhum Ato foi registrado na data selecionada.")
             else:
                 st.write(dicionario_publicacao)
-                for pos in range(len(dicionario_publicacao)):
-                    for idx in dicionario_publicacao:
-                        st.text(dicionario_publicacao['TEXTO'])
-                        #st.text(dicionario_publicacao[dtf][idx])
-            
-           
-           
+                btn_gerar_word = st.button("Gerar Documento>>")
+                if btn_gerar_word:
+                    word_dict = dict(dicionario_publicacao.sort_values(by='NUMERO'))
+                    documento = Document()
+                    for posicao in range(len(word_dict['NUMERO'])):
+                        #st.text(f"{word_dict['NUMERO'][posicao]} - {word_dict['TEXTO'][posicao]}")
+                        textis = f"{word_dict['NUMERO'][posicao]} - {word_dict['TEXTO'][posicao]}".replace('\n', ' ')
+                        documento.add_paragraph(textis)
+                    documento.save("AtosPublicacao.docx")
+                
             
             
             
