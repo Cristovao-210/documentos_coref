@@ -3,7 +3,8 @@ from auxiliares.var_globais import *
 from auxiliares.connection import *
 from auxiliares.funcoes import *
 from formularios.ato.formulario_atos import *
-from docx import Document, document
+import docx
+from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 
@@ -63,16 +64,30 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                 btn_gerar_word = st.button("Gerar Documento>>")
                 if btn_gerar_word:
                     word_dict = dict(dicionario_publicacao.sort_values(by='NUMERO'))
+                    # Criando documento
                     documento = Document()
-                    documento.core_properties.language = "Português" # RESOLVER PROBLEMA DO IDIOMA
+                    # core_properties = documento.core_properties / core_properties.language = "pt-BR" -> não funciona para alterar o idioma e corrigir a verificação ortográfica
+                    # Copiei a solução do github (link abaixo)
+                    # https://github.com/python-openxml/python-docx/issues/727  
+                    for my_style in documento.styles:
+                        style = documento.styles[my_style.name]
+                        rpr = style.element.get_or_add_rPr()
+                        lang = docx.oxml.shared.OxmlElement('w:lang')
+                        if not rpr.xpath('w:lang'):
+                            lang.set(docx.oxml.shared.qn('w:val'),'de-DE')
+                            lang.set(docx.oxml.shared.qn('w:eastAsia'),'en-US')
+                            lang.set(docx.oxml.shared.qn('w:bidi'),'ar-SA')
+                            rpr.append(lang)  
+
+                    # Gravando texto e gerando documento
                     for posicao in range(len(word_dict['NUMERO'])):
-                        #st.text(f"{word_dict['NUMERO'][posicao]} - {word_dict['TEXTO'][posicao]}")
+                        
                         textis = f"{word_dict['NUMERO'][posicao]} - {word_dict['TEXTO'][posicao]}".replace('\n', ' ')
                         paragrafo = documento.add_paragraph(textis)
                         paragrafo_formatado = paragrafo.paragraph_format
                         paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-                        
-                        
+                    
+                    # Salvando documento
                     documento.save("AtosPublicacao.docx")
                 
             
