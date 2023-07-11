@@ -3,9 +3,16 @@ from auxiliares.var_globais import *
 from auxiliares.connection import *
 from auxiliares.funcoes import *
 from formularios.ato.formulario_atos import *
-from docx import Document
+from docx import Document, document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+
 
 st.set_page_config(page_title="Atos UnB")
+
+# COLOCAR CRIAÇÃO DO BANDO DE DADOS AQUI
+conex = criar_conexao('atosgerados_db')
+criar_tabela(conex)
+
 st.markdown("<h4 style='text-align: center; background: #B52E3A; color: white;'>GERADOR DE DOCUMENTOS OFICIAIS</h4>", unsafe_allow_html=True)
 
 dados_do_formulario = {}
@@ -52,15 +59,20 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
             if dicionario_publicacao.empty:
                 st.info("Nenhum Ato foi registrado na data selecionada.")
             else:
-                st.write(dicionario_publicacao)
+                st.write(dicionario_publicacao.sort_values(by='NUMERO'))
                 btn_gerar_word = st.button("Gerar Documento>>")
                 if btn_gerar_word:
                     word_dict = dict(dicionario_publicacao.sort_values(by='NUMERO'))
                     documento = Document()
+                    documento.core_properties.language = "Português" # RESOLVER PROBLEMA DO IDIOMA
                     for posicao in range(len(word_dict['NUMERO'])):
                         #st.text(f"{word_dict['NUMERO'][posicao]} - {word_dict['TEXTO'][posicao]}")
                         textis = f"{word_dict['NUMERO'][posicao]} - {word_dict['TEXTO'][posicao]}".replace('\n', ' ')
-                        documento.add_paragraph(textis)
+                        paragrafo = documento.add_paragraph(textis)
+                        paragrafo_formatado = paragrafo.paragraph_format
+                        paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+                        
+                        
                     documento.save("AtosPublicacao.docx")
                 
             

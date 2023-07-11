@@ -110,7 +110,7 @@ texto_ato = {
                                 Art. 1º  Designar {0} {1} para exercer a função não remunerada de {2}.
 <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">Art. 2º  Este Ato entra em vigor na data de sua publicação no Boletim de Atos Oficiais da UnB (BAO).</p>''', 
                         'dispensa': '''
-                                Art. 1º  Dispensa {0} {1} da função não remunerada de {2}.
+                                Art. 1º  Dispensar {0} {1} da função não remunerada de {2}.
 <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">Art. 2º  Este Ato entra em vigor na data de sua publicação no Boletim de Atos Oficiais da UnB (BAO).</p>'''
                     }
                 },

@@ -22,7 +22,7 @@ def criar_tabela(conexao):
 def inserir_atos(conexao, tabela, base_dados):
     data, numero, texto = base_dados["data_emissao"], base_dados["num_formatado"], base_dados["texto_do_ato_gravar"]
     with conexao.session as s:
-        criar_tabela(conexao)
+        
         s.execute(f'''INSERT INTO {tabela} (dataemissao, numeroformatado, textodoato) VALUES (:data, :numero, :texto)''',
                    params=dict(data=data, numero=numero, texto=texto))
         s.commit()
@@ -35,7 +35,6 @@ def selecionar_atos(conexao, tabela, dt_emissao):# ,
         df = pd.DataFrame(dict_atos)
         indice_vazio = [''] * len(df)
         df.index = indice_vazio
-        df = df.sort_values(by='NUMERO')
         return df
         
         
