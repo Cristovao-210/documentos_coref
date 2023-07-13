@@ -9,10 +9,6 @@ lista_de_tipos_de_ato = ["","Nomeação de CD", "Exoneração de CD",
 
 lista_de_setores = ["", "DGP", "DGP/DAP", "REITORIA"] # FORMULÁRIO
 
-# lista_de_cds = []
-
-# lista_de_fgs = []
-
 lista_finalidades_do_ato = ["", "Manutenção de Funções"]
 
 lista_de_nome_funcoes = ["",
@@ -48,5 +44,22 @@ lista_de_categorias_funcionais = ["",
 # capturando ano
 data_atual = datetime.date.today()
 ano_atual = data_atual.year
+
+lista_meses_ano = ['janeiro',
+                   'fevereiro',
+                   'março',
+                   'abril',
+                   'maio',
+                   'junho',
+                   'julho',
+                   'agosto',
+                   'setembro',
+                   'outubro',
+                   'novembro',
+                   'dezembro']
+
+lista_dias_mes = [dia for dia in range(1,32)]
+lista_de_anos = [dia for dia in range(2022, (ano_atual + 1))]
+
 
 #print(dict_de_tipos_funcoes.get('cds')[1])

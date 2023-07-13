@@ -3,9 +3,8 @@ from auxiliares.var_globais import *
 from auxiliares.connection import *
 from auxiliares.funcoes import *
 from formularios.ato.formulario_atos import *
-import docx
-from docx import Document
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from documentos.ato.partes_do_ato import preambulo_ato
+
 
 
 st.set_page_config(page_title="Atos UnB")
@@ -61,34 +60,19 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                 st.info("Nenhum Ato foi registrado na data selecionada.")
             else:
                 st.write(dicionario_publicacao.sort_values(by='NUMERO'))
-                btn_gerar_word = st.button("Gerar Documento>>")
-                if btn_gerar_word:
-                    word_dict = dict(dicionario_publicacao.sort_values(by='NUMERO'))
-                    # Criando documento
-                    documento = Document()
-                    # core_properties = documento.core_properties / core_properties.language = "pt-BR" -> não funciona para alterar o idioma e corrigir a verificação ortográfica
-                    # Copiei a solução do github (link abaixo)
-                    # https://github.com/python-openxml/python-docx/issues/727  
-                    for my_style in documento.styles:
-                        style = documento.styles[my_style.name]
-                        rpr = style.element.get_or_add_rPr()
-                        lang = docx.oxml.shared.OxmlElement('w:lang')
-                        if not rpr.xpath('w:lang'):
-                            lang.set(docx.oxml.shared.qn('w:val'),'de-DE')
-                            lang.set(docx.oxml.shared.qn('w:eastAsia'),'en-US')
-                            lang.set(docx.oxml.shared.qn('w:bidi'),'ar-SA')
-                            rpr.append(lang)  
-
-                    # Gravando texto e gerando documento
-                    for posicao in range(len(word_dict['NUMERO'])):
-                        
-                        textis = f"{word_dict['NUMERO'][posicao]} - {word_dict['TEXTO'][posicao]}".replace('\n', ' ')
-                        paragrafo = documento.add_paragraph(textis)
-                        paragrafo_formatado = paragrafo.paragraph_format
-                        paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+                col_btn_1, col_btn_2, col_btn_3= st.columns([3,3,2])
+                with col_btn_1:
+                    pass
+                with col_btn_2:
+                    btn_gerar_word = st.button("Gerar Documento>>")
+                    if btn_gerar_word:
+                        word_dict = dict(dicionario_publicacao.sort_values(by='NUMERO'))
+                        preambulo_docs = preambulo_ato(dados_do_formulario) # inventar uma forma não muito repetitiva para colocar o texto
+                        gerar_word_publicacao(word_dict, preambulo_docs)
+                with col_btn_3:
+                    pass
+                
                     
-                    # Salvando documento
-                    documento.save("AtosPublicacao.docx")
                 
             
             
