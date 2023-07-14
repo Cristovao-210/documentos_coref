@@ -1,6 +1,9 @@
 import streamlit as st
 from auxiliares.var_globais import *
+from auxiliares.funcoes import *
 from documentos.ato.base_do_ato import gerar_ato
+from documentos.ato.partes_do_ato import texto_do_ato, preambulo_ato
+from auxiliares.connection import *
 
 
 
@@ -92,8 +95,17 @@ def formulario_gerar_ato(dados_do_formulario):
 
     # Verificando o clique
     if btn_gera_ato:
-        gerar_ato(dados_do_formulario)
-        
+        if dados_do_formulario['numero_ato'] != "" and dados_do_formulario['nome_servidor'] != "":
+            # gerando documento HTML do ato
+            gerar_ato(dados_do_formulario)
+            # grando texto do ato no banco de dados / salvando as informações do ato no BD. / criando bando de dados, tabela e inserção   
+            dados_publicacao = gerar_conteudo_publicacao(dados_do_formulario['numero_ato'], dados_do_formulario['ano_do_ato'], texto_do_ato(dados_do_formulario), preambulo_ato(dados_do_formulario))
+            conectar = criar_conexao('atosgerados_db')
+            inserir_atos(conectar, 'atos_publicacao', dados_publicacao)
+        else:
+            st.error("Campos Número do Ato ou Nome do Servidor são obrigatórios")
+
+            
 
         
         

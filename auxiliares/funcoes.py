@@ -39,22 +39,24 @@ def data_convertida_br(dt): # recebe uma String
     return f'{dia}/{mes}/{ano}' # retorna uma String
   
 # gerar word
-def gerar_conteudo_publicacao(num_ato, ano_ato, texto): 
+def gerar_conteudo_publicacao(num_ato, ano_ato, texto, preambulo): 
 
     # posicionando inicio do texto
     inicio = texto.find('>') + 1 
     # coletando informações para gravar
     data_atual = data_convertida_br(str(datetime.date.today()))
     _numero_ato_ = f'Nº {num_ato}/{ano_ato}'
+    preambulo_gravar = preambulo[inicio:].replace('</p>', '').lstrip()
     texto_gravar = texto[inicio:].replace('<p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">', '').replace('</p>', '').lstrip()
     # mostrando texto do ato abaixo do formulário
     texto_print = f"""{_numero_ato_} - {texto_gravar}"""
     texto_publ = {'Texto_para_Publicação': texto_print}
     st.write(texto_publ)
+    st.write(preambulo_gravar)
     ato_gravacao = {'data_emissao': data_atual, 'num_formatado': _numero_ato_, 'texto_do_ato_gravar': texto_gravar}
     return ato_gravacao
 
-def gerar_word_publicacao(word_dict, preambulo_doc):
+def gerar_word_publicacao(word_dict):# , preambulo_doc
     # Criando documento
     documento = Document()
     # core_properties = documento.core_properties / core_properties.language = "pt-BR" -> não funciona para alterar o idioma e corrigir a verificação ortográfica
@@ -72,14 +74,15 @@ def gerar_word_publicacao(word_dict, preambulo_doc):
 
     # criando cabeçalho do documento
 
-    dia_do_mes = st.selectbox("Escolha o dia:", lista_dias_mes)
-    nome_do_mes = st.selectbox("Escolha o dia:", lista_meses_ano)
-    ano_data = st.selectbox("Escolha o dia:", lista_de_anos)
+    # dia_do_mes = st.selectbox("Escolha o dia:", lista_dias_mes)
+    # nome_do_mes = st.selectbox("Escolha o dia:", lista_meses_ano)
+    # ano_data = st.selectbox("Escolha o dia:", lista_de_anos)
+    # setor = ''
 
-    data_doc_word = f'Brasília, {dia_do_mes} de {nome_do_mes} de {ano_data}\n'
-    preambulo_doc_word = preambulo_doc
-    documento.add_paragraph(data_doc_word)
-    documento.add_paragraph(preambulo_doc_word)
+    # data_doc_word = f'ATO DO {setor.upper()}, {dia_do_mes} DE {nome_do_mes.upper()} DE {ano_data}\n'
+    # preambulo_doc_word = preambulo_doc
+    # documento.add_paragraph(data_doc_word)
+    # documento.add_paragraph(preambulo_doc_word)
 
     # Gravando texto e gerando documento
     for posicao in range(len(word_dict['NUMERO'])):

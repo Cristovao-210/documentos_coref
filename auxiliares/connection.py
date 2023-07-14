@@ -35,6 +35,7 @@ def selecionar_atos(conexao, tabela, dt_emissao):# ,
         df = pd.DataFrame(dict_atos)
         indice_vazio = [''] * len(df)
         df.index = indice_vazio
+
         return df
         
         

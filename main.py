@@ -60,17 +60,17 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                 st.info("Nenhum Ato foi registrado na data selecionada.")
             else:
                 st.write(dicionario_publicacao.sort_values(by='NUMERO'))
+                #marcador = st.data_editor(dicionario_publicacao, num_rows= "dynamic")
                 col_btn_1, col_btn_2, col_btn_3= st.columns([3,3,2])
                 with col_btn_1:
                     pass
                 with col_btn_2:
                     btn_gerar_word = st.button("Gerar Documento>>")
-                    if btn_gerar_word:
-                        word_dict = dict(dicionario_publicacao.sort_values(by='NUMERO'))
-                        preambulo_docs = preambulo_ato(dados_do_formulario) # inventar uma forma não muito repetitiva para colocar o texto
-                        gerar_word_publicacao(word_dict, preambulo_docs)
                 with col_btn_3:
                     pass
+                if btn_gerar_word:
+                    word_dict = dict(dicionario_publicacao.sort_values(by='NUMERO'))
+                    gerar_word_publicacao(word_dict)
                 
                     
                 
