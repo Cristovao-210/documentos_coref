@@ -61,15 +61,30 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                 st.info("Nenhum Ato foi registrado na data selecionada.")
             else:
                 setor = st.selectbox("Selecione o Setor Responsável pela emissão do ato:", lista_de_setores)
-                dirigente = st.selectbox("Selecione o Setor Responsável pela emissão do ato:", lista_dirigentes_responsaveis)
+                dirigente = None
+                if setor == 'DGP':
+                    dicionario_publicacao = dicionario_publicacao.query('SETOR=="{0}"'.format(setor))    
+                    dirigente = st.selectbox("Selecione o Dirigente Responsável pela emissão do ato:", (dict_dirigentes_responsaveis['dgp']['decanato'][dirig] for dirig in dict_dirigentes_responsaveis['dgp']['decanato'])) # 
+                    dicionario_publicacao = dicionario_publicacao.query('DIRIGENTE=="{0}"'.format(dirigente))
+                elif setor == 'DGP/DAP':
+                    dicionario_publicacao = dicionario_publicacao.query('SETOR=="{0}"'.format(setor))    
+                    dirigente = st.selectbox("Selecione o Dirigente Responsável pela emissão do ato:", (dict_dirigentes_responsaveis['dgp']['dap'][dirig] for dirig in dict_dirigentes_responsaveis['dgp']['decanato'])) # 
+                    dicionario_publicacao = dicionario_publicacao.query('DIRIGENTE=="{0}"'.format(dirigente))
+                elif setor == 'REITORIA': 
+                    dicionario_publicacao = dicionario_publicacao.query('SETOR=="{0}"'.format(setor))   
+                    dirigente = st.selectbox("Selecione o Dirigente Responsável pela emissão do ato:", (dict_dirigentes_responsaveis['reitoria'][dirig] for dirig in dict_dirigentes_responsaveis['reitoria'])) # 
+                    dicionario_publicacao = dicionario_publicacao.query('DIRIGENTE=="{0}"'.format(dirigente))
+                else:
+                    dirigente = st.selectbox("Selecione o Dirigente Responsável pela emissão do ato:",["Escolha o setor responsável."], disabled=True)
+
+                # Mostrando dados após filtros    
                 st.write(dicionario_publicacao.sort_values(by='NUMERO'))
-                #st.write(valor)
-                #marcador = st.data_editor(dicionario_publicacao, num_rows= "dynamic")
+
                 col_btn_1, col_btn_2, col_btn_3= st.columns([3,3,2])
                 with col_btn_1:
                     pass
                 with col_btn_2:
-                    btn_gerar_word = st.button("Gerar Documento>>")
+                    btn_gerar_word = st.button("Gerar Documento")
                 with col_btn_3:
                     pass
                 if btn_gerar_word:

@@ -39,9 +39,21 @@ lista_de_categorias_funcionais = ["",
                                   "o Professor do Magistério Superior", "a Professora do Magistério Superior",
                                   "Outros (Usar campo 'Nome do Servidor')"]
 
-lista_dirigentes_responsaveis = ["", "Decano(a) titular", "Decano(a) em exercício",
-                                 "Diretor(a) titular", "Diretor(a) em exercício",
-                                 "Reitor(a)", "Vice-Reitor(a)"]
+dict_dirigentes_responsaveis = {'dgp':
+                                    {'decanato': 
+                                        {'todos': "",
+                                         'titular': "Decano(a) titular", 
+                                         'em_exercicio': "Decano(a) em exercício"},
+                                     'dap': 
+                                        {'titular':"Diretor(a) titular",
+                                         'em_exercicio': "Diretor(a) em exercício"}
+                                    },
+                                    'reitoria':
+                                        {
+                                        'titular': "Reitor(a)",
+                                        'em_exercicio': "Vice-Reitor(a)"
+                                        }
+                                }
 
 ###########################################################################################################################
 
