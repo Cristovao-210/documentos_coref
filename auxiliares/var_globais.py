@@ -39,6 +39,10 @@ lista_de_categorias_funcionais = ["",
                                   "o Professor do Magistério Superior", "a Professora do Magistério Superior",
                                   "Outros (Usar campo 'Nome do Servidor')"]
 
+lista_dirigentes_responsaveis = ["", "Decano(a) titular", "Decano(a) em exercício",
+                                 "Diretor(a) titular", "Diretor(a) em exercício",
+                                 "Reitor(a)", "Vice-Reitor(a)"]
+
 ###########################################################################################################################
 
 # capturando ano

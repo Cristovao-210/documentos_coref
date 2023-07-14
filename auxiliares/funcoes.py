@@ -39,21 +39,24 @@ def data_convertida_br(dt): # recebe uma String
     return f'{dia}/{mes}/{ano}' # retorna uma String
   
 # gerar word
-def gerar_conteudo_publicacao(num_ato, ano_ato, texto, preambulo): 
+def gerar_conteudo_publicacao(num_ato, ano_ato, texto, dirigente_responsavel, setor_responsavel): 
 
     # posicionando inicio do texto
     inicio = texto.find('>') + 1 
     # coletando informações para gravar
     data_atual = data_convertida_br(str(datetime.date.today()))
     _numero_ato_ = f'Nº {num_ato}/{ano_ato}'
-    preambulo_gravar = preambulo[inicio:].replace('</p>', '').lstrip()
     texto_gravar = texto[inicio:].replace('<p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">', '').replace('</p>', '').lstrip()
+
     # mostrando texto do ato abaixo do formulário
     texto_print = f"""{_numero_ato_} - {texto_gravar}"""
     texto_publ = {'Texto_para_Publicação': texto_print}
     st.write(texto_publ)
-    st.write(preambulo_gravar)
-    ato_gravacao = {'data_emissao': data_atual, 'num_formatado': _numero_ato_, 'texto_do_ato_gravar': texto_gravar}
+    ato_gravacao = {'data_emissao': data_atual,
+                    'num_formatado': _numero_ato_,
+                    'texto_do_ato_gravar': texto_gravar,
+                    'dirigente_responsavel': dirigente_responsavel,
+                    'setor_responsavel': setor_responsavel}
     return ato_gravacao
 
 def gerar_word_publicacao(word_dict):# , preambulo_doc

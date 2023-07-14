@@ -99,7 +99,11 @@ def formulario_gerar_ato(dados_do_formulario):
             # gerando documento HTML do ato
             gerar_ato(dados_do_formulario)
             # grando texto do ato no banco de dados / salvando as informações do ato no BD. / criando bando de dados, tabela e inserção   
-            dados_publicacao = gerar_conteudo_publicacao(dados_do_formulario['numero_ato'], dados_do_formulario['ano_do_ato'], texto_do_ato(dados_do_formulario), preambulo_ato(dados_do_formulario))
+            dados_publicacao = gerar_conteudo_publicacao(dados_do_formulario['numero_ato'],
+                                                          dados_do_formulario['ano_do_ato'],
+                                                          texto_do_ato(dados_do_formulario),
+                                                          dados_do_formulario['dirigente_responsavel'],
+                                                          setor_responsavel)
             conectar = criar_conexao('atosgerados_db')
             inserir_atos(conectar, 'atos_publicacao', dados_publicacao)
         else:

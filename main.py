@@ -48,7 +48,7 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
 
     elif dados_do_formulario['acao_com_documento'] == "Preparar para Publicação":
         
-        st.markdown("<br><h6 style='text-align: center;'>Gerar documento para publicação</h6>", unsafe_allow_html=True)
+        st.markdown("<br><h6 style='padding: 5px ;text-align: center; border-style: solid; border-color: brown; border-width: 0.5px;'>Gerar documento para publicação</h6>", unsafe_allow_html=True)
 
         # criando bando de dados, tabela, inserção e busca
         data_publicacao = st.date_input('Informe a data de emissão do ato: ')
@@ -56,10 +56,14 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
         if data_publicacao != "":
             data_publicacao = data_convertida_br(str(data_publicacao))
             dicionario_publicacao = selecionar_atos(conectar,'atos_publicacao', data_publicacao)
+            #valor = dicionario_publicacao.query('NUMERO=="Nº 1234/2023"')
             if dicionario_publicacao.empty:
                 st.info("Nenhum Ato foi registrado na data selecionada.")
             else:
+                setor = st.selectbox("Selecione o Setor Responsável pela emissão do ato:", lista_de_setores)
+                dirigente = st.selectbox("Selecione o Setor Responsável pela emissão do ato:", lista_dirigentes_responsaveis)
                 st.write(dicionario_publicacao.sort_values(by='NUMERO'))
+                #st.write(valor)
                 #marcador = st.data_editor(dicionario_publicacao, num_rows= "dynamic")
                 col_btn_1, col_btn_2, col_btn_3= st.columns([3,3,2])
                 with col_btn_1:
@@ -70,6 +74,7 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                     pass
                 if btn_gerar_word:
                     word_dict = dict(dicionario_publicacao.sort_values(by='NUMERO'))
+                    #word_dict = dict(valor.sort_values(by='NUMERO'))
                     gerar_word_publicacao(word_dict)
                 
                     
