@@ -41,8 +41,7 @@ lista_de_categorias_funcionais = ["",
 
 dict_dirigentes_responsaveis = {'dgp':
                                     {'decanato': 
-                                        {'todos': "",
-                                         'titular': "Decano(a) titular", 
+                                        {'titular': "Decano(a) titular", 
                                          'em_exercicio': "Decano(a) em exercício"},
                                      'dap': 
                                         {'titular':"Diretor(a) titular",
