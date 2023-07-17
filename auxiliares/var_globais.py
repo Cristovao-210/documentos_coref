@@ -60,18 +60,18 @@ dict_dirigentes_responsaveis = {'dgp':
 data_atual = datetime.date.today()
 ano_atual = data_atual.year
 
-lista_meses_ano = ['janeiro',
-                   'fevereiro',
-                   'março',
-                   'abril',
-                   'maio',
-                   'junho',
-                   'julho',
-                   'agosto',
-                   'setembro',
-                   'outubro',
-                   'novembro',
-                   'dezembro']
+lista_meses_ano = {1:'janeiro',
+                   2:'fevereiro',
+                   3:'março',
+                   4:'abril',
+                   5:'maio',
+                   6:'junho',
+                   7:'julho',
+                   8:'agosto',
+                   9:'setembro',
+                   10:'outubro',
+                   11:'novembro',
+                   12:'dezembro'}
 
 lista_dias_mes = [dia for dia in range(1,32)]
 lista_de_anos = [dia for dia in range(2022, (ano_atual + 1))]

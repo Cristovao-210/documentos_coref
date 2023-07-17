@@ -47,7 +47,8 @@ if dados_do_formulario['documento_selecionado'] == "Ato":
                     formulario_gerar_ato(dados_do_formulario)
 
     elif dados_do_formulario['acao_com_documento'] == "Preparar para Publicação":
-        gerar_documento_publicacao()        
+        gerar_documento_publicacao()
+        
                 
                     
                 

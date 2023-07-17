@@ -6,7 +6,7 @@ import docx
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from auxiliares.var_globais import *
-
+from documentos.ato.compor_arquivo_atos import preambulo_word
 
 #Baixar Arquivo
 def baixar_documento(form_gerado):
@@ -37,7 +37,7 @@ def data_convertida_br(dt): # recebe uma String
     return ""
   else:
     return f'{dia}/{mes}/{ano}' # retorna uma String
-  
+print(data_atual)
 # gerar word
 def gerar_conteudo_publicacao(num_ato, ano_ato, texto, dirigente_responsavel, setor_responsavel): 
 
@@ -76,16 +76,34 @@ def gerar_word_publicacao(word_dict):# , preambulo_doc
             rpr.append(lang)  
 
     # criando cabeçalho do documento
+    dia_do_mes = data_atual.day
+    nome_do_mes = lista_meses_ano.get(data_atual.month)
+    ano_data = data_atual.year
+    setor = word_dict['SETOR'][0]
 
-    # dia_do_mes = st.selectbox("Escolha o dia:", lista_dias_mes)
-    # nome_do_mes = st.selectbox("Escolha o dia:", lista_meses_ano)
-    # ano_data = st.selectbox("Escolha o dia:", lista_de_anos)
-    # setor = ''
+    data_doc_word = f'ATO DO {setor}, {dia_do_mes} DE {str(nome_do_mes).upper()} DE {ano_data}\n'
+    preambulo_doc_word = None
 
-    # data_doc_word = f'ATO DO {setor.upper()}, {dia_do_mes} DE {nome_do_mes.upper()} DE {ano_data}\n'
-    # preambulo_doc_word = preambulo_doc
-    # documento.add_paragraph(data_doc_word)
-    # documento.add_paragraph(preambulo_doc_word)
+    for posicao in range(len(word_dict['DIRIGENTE'])):
+        if word_dict['DIRIGENTE'][posicao] == "Decano(a) titular":
+            preambulo_doc_word = preambulo_word['funcao']['txt_dgp']
+        elif word_dict['DIRIGENTE'][posicao] == "Decano(a) em exercício":
+            preambulo_doc_word = preambulo_word['funcao']['txt_dgp_substituto']
+        elif word_dict['DIRIGENTE'][posicao] == "Diretor(a) titular":
+            preambulo_doc_word = preambulo_word['funcao']['txt_dgp_dap']
+        elif word_dict['DIRIGENTE'][posicao] == "Diretor(a) em exercício":
+            preambulo_doc_word = preambulo_word['funcao']['txt_dgp_dap_susbstituto']
+        elif word_dict['DIRIGENTE'][posicao] == "Reitor(a)":
+            preambulo_doc_word = preambulo_word['funcao']['txt_reitoria']
+        elif word_dict['DIRIGENTE'][posicao] == "Vice-Reitor(a)":
+            preambulo_doc_word = preambulo_word['funcao']['txt_reitoria_substituto']
+
+    paragrafo = documento.add_paragraph(data_doc_word)
+    paragrafo_formatado = paragrafo.paragraph_format
+    paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    paragrafo = documento.add_paragraph(preambulo_doc_word)
+    paragrafo_formatado = paragrafo.paragraph_format
+    paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 
     # Gravando texto e gerando documento
     for posicao in range(len(word_dict['NUMERO'])):
@@ -108,8 +126,7 @@ def btn_gerar_publicacao(dicionario_publicacao):
     with col_btn_3:
         pass
     if btn_gerar_word:
-        word_dict = dict(dicionario_publicacao.sort_values(by='NUMERO'))
-        #word_dict = dict(valor.sort_values(by='NUMERO'))
+        word_dict = dict(dicionario_publicacao.sort_values(by='NUMERO')) 
         gerar_word_publicacao(word_dict)
 
 
