@@ -5,7 +5,6 @@ from auxiliares.connection import *
 import docx
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.enum.style import WD_STYLE_TYPE
 from auxiliares.var_globais import *
 from docx.shared import Pt
 from documentos.ato.compor_arquivo_atos import preambulo_word, dirigentes
@@ -64,6 +63,7 @@ def gerar_conteudo_publicacao(num_ato, ano_ato, texto, dirigente_responsavel, se
 def gerar_word_publicacao(word_dict):# , preambulo_doc
     # Criando documento
     documento = Document()
+
     # core_properties = documento.core_properties / core_properties.language = "pt-BR" -> não funciona para alterar o idioma e corrigir a verificação ortográfica
     # Copiei a solução do github (link abaixo)
     # https://github.com/python-openxml/python-docx/issues/727  
@@ -83,10 +83,18 @@ def gerar_word_publicacao(word_dict):# , preambulo_doc
     ano_data = data_atual.year
     setor = word_dict['SETOR'][0]
 
+    # configurando texto do título do documento
     data_doc_word = f'ATOS DO(A) {setor}, {dia_do_mes} DE {str(nome_do_mes).upper()} DE {ano_data}\n'
     preambulo_doc_word = None
     assinatura = None
 
+    # configurando nome e tamanho da fonte
+    style = documento.styles['Normal']
+    font = style.font
+    font.name = 'Arial'
+    font.size = Pt(12)
+    
+    # percorrendo a coluna DIRIGENTE para configurar o preambulo e a assinatura
     for posicao in range(len(word_dict['DIRIGENTE'])):
         if word_dict['DIRIGENTE'][posicao] == "Decano(a) titular":
             preambulo_doc_word = preambulo_word['funcao']['txt_dgp']
@@ -107,35 +115,26 @@ def gerar_word_publicacao(word_dict):# , preambulo_doc
             preambulo_doc_word = preambulo_word['funcao']['txt_reitoria_substituto']
             assinatura = dirigentes['reitoria']['em_exercicio']
 
-    # configurando fonte
-    # estilo = documento.styles
-    # paragrafo = estilo.add_style("Paragraph", WD_STYLE_TYPE.PARAGRAPH)
-    # paragrafo.font.name = 'Arial'
-    # paragrafo.font.size = Pt(12)
-
-    # inserindo cabeçalho no documento
+    # inserindo cabeçalho (data) no documento
     paragrafo = documento.add_paragraph(data_doc_word)
     paragrafo_formatado = paragrafo.paragraph_format
     paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-    
-    # p = Document().styles.add_style("Paragraph", WD_STYLE_TYPE.PARAGRAPH)
-    # p.font.name = 'Arial'
-    # p.font.size = Pt(12)
-   
-
+    # inserindo cabeçalho (preambulo) no documento
     paragrafo = documento.add_paragraph(preambulo_doc_word)
     paragrafo_formatado = paragrafo.paragraph_format
     paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
   
-
     # Gravando texto e gerando documento
     for posicao in range(len(word_dict['NUMERO'])):
-        
         textis = f"{word_dict['NUMERO'][posicao]} - {word_dict['TEXTO'][posicao]}".replace('\n', ' ')
         paragrafo = documento.add_paragraph(textis)
         paragrafo_formatado = paragrafo.paragraph_format
         paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        # quebra de página para não acumular tudo em um documento só
+        if (posicao+1) == 1:
+            documento.add_page_break()
+
     
     # Assinatura
     assinatura = '\n{0}'.format(assinatura.replace('<br>', '\n'))
@@ -143,9 +142,15 @@ def gerar_word_publicacao(word_dict):# , preambulo_doc
     paragrafo_formatado = paragrafo.paragraph_format
     paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
+    # aplicando estilos (nome da fonte e tamanho da fonte)
+    paragrafo.style = documento.styles['Normal']
+
     # Salvando documento
     documento.save("AtosPublicacao.docx")
+
+    # baixar documento
     baixar_documento("AtosPublicacao.docx")
+
 
 def btn_gerar_publicacao(dicionario_publicacao):
     col_btn_1, col_btn_2, col_btn_3= st.columns([2,3,2])
