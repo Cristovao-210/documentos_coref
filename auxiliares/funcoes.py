@@ -5,8 +5,10 @@ from auxiliares.connection import *
 import docx
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.style import WD_STYLE_TYPE
 from auxiliares.var_globais import *
-from documentos.ato.compor_arquivo_atos import preambulo_word
+from docx.shared import Pt
+from documentos.ato.compor_arquivo_atos import preambulo_word, dirigentes
 
 #Baixar Arquivo
 def baixar_documento(form_gerado):
@@ -37,7 +39,7 @@ def data_convertida_br(dt): # recebe uma String
     return ""
   else:
     return f'{dia}/{mes}/{ano}' # retorna uma String
-print(data_atual)
+
 # gerar word
 def gerar_conteudo_publicacao(num_ato, ano_ato, texto, dirigente_responsavel, setor_responsavel): 
 
@@ -81,29 +83,51 @@ def gerar_word_publicacao(word_dict):# , preambulo_doc
     ano_data = data_atual.year
     setor = word_dict['SETOR'][0]
 
-    data_doc_word = f'ATO DO {setor}, {dia_do_mes} DE {str(nome_do_mes).upper()} DE {ano_data}\n'
+    data_doc_word = f'ATOS DO(A) {setor}, {dia_do_mes} DE {str(nome_do_mes).upper()} DE {ano_data}\n'
     preambulo_doc_word = None
+    assinatura = None
 
     for posicao in range(len(word_dict['DIRIGENTE'])):
         if word_dict['DIRIGENTE'][posicao] == "Decano(a) titular":
             preambulo_doc_word = preambulo_word['funcao']['txt_dgp']
+            assinatura = dirigentes['dgp']['decanato']['titular']
         elif word_dict['DIRIGENTE'][posicao] == "Decano(a) em exercício":
             preambulo_doc_word = preambulo_word['funcao']['txt_dgp_substituto']
+            assinatura = dirigentes['dgp']['decanato']['em_exercicio']
         elif word_dict['DIRIGENTE'][posicao] == "Diretor(a) titular":
             preambulo_doc_word = preambulo_word['funcao']['txt_dgp_dap']
+            assinatura = dirigentes['dgp']['dap']['titular']
         elif word_dict['DIRIGENTE'][posicao] == "Diretor(a) em exercício":
             preambulo_doc_word = preambulo_word['funcao']['txt_dgp_dap_susbstituto']
+            assinatura = dirigentes['dgp']['dap']['em_exercicio']
         elif word_dict['DIRIGENTE'][posicao] == "Reitor(a)":
             preambulo_doc_word = preambulo_word['funcao']['txt_reitoria']
+            assinatura = dirigentes['reitoria']['titular']
         elif word_dict['DIRIGENTE'][posicao] == "Vice-Reitor(a)":
             preambulo_doc_word = preambulo_word['funcao']['txt_reitoria_substituto']
+            assinatura = dirigentes['reitoria']['em_exercicio']
 
+    # configurando fonte
+    # estilo = documento.styles
+    # paragrafo = estilo.add_style("Paragraph", WD_STYLE_TYPE.PARAGRAPH)
+    # paragrafo.font.name = 'Arial'
+    # paragrafo.font.size = Pt(12)
+
+    # inserindo cabeçalho no documento
     paragrafo = documento.add_paragraph(data_doc_word)
     paragrafo_formatado = paragrafo.paragraph_format
     paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+    
+    # p = Document().styles.add_style("Paragraph", WD_STYLE_TYPE.PARAGRAPH)
+    # p.font.name = 'Arial'
+    # p.font.size = Pt(12)
+   
+
     paragrafo = documento.add_paragraph(preambulo_doc_word)
     paragrafo_formatado = paragrafo.paragraph_format
     paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+  
 
     # Gravando texto e gerando documento
     for posicao in range(len(word_dict['NUMERO'])):
@@ -113,6 +137,12 @@ def gerar_word_publicacao(word_dict):# , preambulo_doc
         paragrafo_formatado = paragrafo.paragraph_format
         paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     
+    # Assinatura
+    assinatura = '\n{0}'.format(assinatura.replace('<br>', '\n'))
+    paragrafo = documento.add_paragraph(assinatura)
+    paragrafo_formatado = paragrafo.paragraph_format
+    paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
     # Salvando documento
     documento.save("AtosPublicacao.docx")
     baixar_documento("AtosPublicacao.docx")
