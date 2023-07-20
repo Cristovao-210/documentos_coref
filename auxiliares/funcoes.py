@@ -132,7 +132,7 @@ def gerar_word_publicacao(word_dict):# , preambulo_doc
         paragrafo_formatado = paragrafo.paragraph_format
         paragrafo_formatado.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
         # quebra de página para não acumular tudo em um documento só
-        if (posicao+1) == 1:
+        if (posicao+1) == 6:
             documento.add_page_break()
 
     
