@@ -186,8 +186,11 @@ def gerar_documento_publicacao():
                 else:    
                     dirigente = st.selectbox("Selecione o Dirigente Responsável pela emissão do ato:", (dict_dirigentes_responsaveis['dgp']['decanato'][dirig] for dirig in dict_dirigentes_responsaveis['dgp']['decanato'])) # 
                     dicionario_publicacao = dicionario_publicacao.query('DIRIGENTE=="{0}"'.format(dirigente))
-                    st.table(dicionario_publicacao.sort_values(by='NUMERO')) # Mostrando dados após filtros
-                    btn_gerar_publicacao(dicionario_publicacao)
+                    if dicionario_publicacao.empty:
+                        st.info("Nenhum Ato encontrado para o dirigente selecionado.")
+                    else:
+                        st.table(dicionario_publicacao.sort_values(by='NUMERO')) # Mostrando dados após filtros
+                        btn_gerar_publicacao(dicionario_publicacao)
             elif setor == 'DGP/DAP':
                 dicionario_publicacao = dicionario_publicacao.query('SETOR=="{0}"'.format(setor))
                 if dicionario_publicacao.empty:
@@ -195,8 +198,11 @@ def gerar_documento_publicacao():
                 else:  
                     dirigente = st.selectbox("Selecione o Dirigente Responsável pela emissão do ato:", (dict_dirigentes_responsaveis['dgp']['dap'][dirig] for dirig in dict_dirigentes_responsaveis['dgp']['decanato'])) # 
                     dicionario_publicacao = dicionario_publicacao.query('DIRIGENTE=="{0}"'.format(dirigente))
-                    st.table(dicionario_publicacao.sort_values(by='NUMERO')) # Mostrando dados após filtros
-                    btn_gerar_publicacao(dicionario_publicacao)
+                    if dicionario_publicacao.empty:
+                        st.info("Nenhum Ato encontrado para o dirigente selecionado.")
+                    else:
+                        st.table(dicionario_publicacao.sort_values(by='NUMERO')) # Mostrando dados após filtros
+                        btn_gerar_publicacao(dicionario_publicacao)
             elif setor == 'REITORIA': 
                 dicionario_publicacao = dicionario_publicacao.query('SETOR=="{0}"'.format(setor))
                 if dicionario_publicacao.empty:
@@ -204,8 +210,11 @@ def gerar_documento_publicacao():
                 else:   
                     dirigente = st.selectbox("Selecione o Dirigente Responsável pela emissão do ato:", (dict_dirigentes_responsaveis['reitoria'][dirig] for dirig in dict_dirigentes_responsaveis['reitoria'])) # 
                     dicionario_publicacao = dicionario_publicacao.query('DIRIGENTE=="{0}"'.format(dirigente))
-                    st.table(dicionario_publicacao.sort_values(by='NUMERO')) # Mostrando dados após filtros
-                    btn_gerar_publicacao(dicionario_publicacao)
+                    if dicionario_publicacao.empty:
+                        st.info("Nenhum Ato encontrado para o dirigente selecionado.")
+                    else:
+                        st.table(dicionario_publicacao.sort_values(by='NUMERO')) # Mostrando dados após filtros
+                        btn_gerar_publicacao(dicionario_publicacao)
             else:
                 dirigente = st.selectbox("Selecione o Dirigente Responsável pela emissão do ato:",["Escolha o setor responsável."], disabled=True)
                 # Mostrando todos os dados     
