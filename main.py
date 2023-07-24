@@ -1,6 +1,6 @@
 import streamlit as st
 from auxiliares.var_globais import *
-from auxiliares.connection import *
+import auxiliares.connection 
 from auxiliares.funcoes import *
 from formularios.ato.formulario_atos import *
 from documentos.ato.partes_do_ato import preambulo_ato
@@ -8,6 +8,9 @@ from documentos.ato.partes_do_ato import preambulo_ato
 
 
 st.set_page_config(page_title="Atos UnB")
+# CRIAÇÃO DO BANDO DE DADOS
+conex = auxiliares.connection.criar_conexao('atosgerados_db')
+auxiliares.connection.criar_tabela(conex)
 
 
 st.markdown("<h4 style='text-align: center; background: #B52E3A; color: white;'>GERADOR DE DOCUMENTOS OFICIAIS</h4>", unsafe_allow_html=True)
@@ -16,10 +19,6 @@ dados_do_formulario = {}
 dados_do_formulario['documento_selecionado'] = st.sidebar.selectbox("Tipo de Documento", lista_de_documentos)
 
 if dados_do_formulario['documento_selecionado'] == "Ato":
-
-    # CRIAÇÃO DO BANDO DE DADOS
-    conex = criar_conexao('atosgerados_db')
-    criar_tabela(conex)
 
     dados_do_formulario['acao_com_documento'] = st.sidebar.selectbox("Solicitação", ("", "Gerar Ato", "Preparar para Publicação"))
     if dados_do_formulario["acao_com_documento"] == 'Gerar Ato':
