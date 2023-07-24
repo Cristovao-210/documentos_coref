@@ -56,6 +56,8 @@ dict_dirigentes_responsaveis = {'dgp':
 
 ###########################################################################################################################
 
+modelo_ato_em_branco = {"Número SEI do modelo de ato": 9449709}
+
 # capturando ano
 data_atual = datetime.date.today()
 ano_atual = data_atual.year

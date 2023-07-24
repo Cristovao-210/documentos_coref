@@ -104,6 +104,7 @@ def formulario_gerar_ato(dados_do_formulario):
                                                           texto_do_ato(dados_do_formulario),
                                                           dados_do_formulario['dirigente_responsavel'],
                                                           setor_responsavel)
+            st.write(modelo_ato_em_branco)
             conectar = criar_conexao('atosgerados_db')
             inserir_atos(conectar, 'atos_publicacao', dados_publicacao)
         else:
