@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 
+
 # criando conexão
 def criar_conexao(_nome_do_banco_): # 'atosgerados_db'
     try:
