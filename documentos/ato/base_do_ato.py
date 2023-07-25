@@ -1,17 +1,18 @@
 from documentos.ato.partes_do_ato import *
-
-
-
+from auxiliares.funcoes import tratar_elementos_ligacao_txt
 
 
 def gerar_ato(formulario):
     # recebendo partes do Ato
     _epigarafe_ = epigrafe_ato(formulario)
     _ementa_ = ementa_ato(formulario)
+    _ementa_ = tratar_elementos_ligacao_txt(_ementa_)
     _preambulo_ = preambulo_ato(formulario)
     _texto_ato_ = texto_do_ato(formulario)
+    _texto_ato_ = tratar_elementos_ligacao_txt(_texto_ato_)
     _assinatura_ = assinatura_ato(formulario)
     _nome_arquivo_ = f"Ato_{formulario['nome_servidor']}.html"
+
     # escrevendo partes no arquivo
     with open(_nome_arquivo_, "w", encoding='utf-8') as f:
         f.write('''

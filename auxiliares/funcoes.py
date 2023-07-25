@@ -9,7 +9,7 @@ from auxiliares.var_globais import *
 from docx.shared import Pt
 from documentos.ato.compor_arquivo_atos import preambulo_word, dirigentes
 
-#Baixar Arquivo
+# Baixar Arquivo
 def baixar_documento(form_gerado):
     st.markdown('<p style="text-align: center; background: lightgreen">Clique no botão abaixo para fazer download do documento</p>', unsafe_allow_html=True)
     pos_btn_1, pos_btn_2, pos_btn_3 = st.columns([3,3,2])
@@ -29,17 +29,28 @@ def baixar_documento(form_gerado):
         pass
     os.remove(form_gerado)
    
-# função para deixar data recebida no formato necessário
-def data_convertida_br(dt): # recebe uma String
+# função para deixar data recebida no formato necessário (recebe uma String - retorna uma String)
+def data_convertida_br(dt): 
   dia = dt[8:]
   mes = dt[5:7]
   ano = dt[0:4]
   if dia == "":
     return ""
   else:
-    return f'{dia}/{mes}/{ano}' # retorna uma String
+    return f'{dia}/{mes}/{ano}' 
 
-# gerar word
+# tratando preposições e conectivos em geral que aparecem o a inicial maiúscula
+def tratar_elementos_ligacao_txt(txt):
+
+    lista_conetivos = [" Da ", " De ", " Di ", " Do ", " Du ",
+                       " A ", " E ", " I ", " O ", " U ", 
+                       " Em ", " Com ", " Que "]
+    for conectivo in lista_conetivos:
+        if conectivo in txt:
+            txt = txt.replace(conectivo, conectivo.lower())
+    return txt
+
+# gerar conteúdo word
 def gerar_conteudo_publicacao(num_ato, ano_ato, texto, dirigente_responsavel, setor_responsavel): 
 
     # posicionando inicio do texto
@@ -51,19 +62,21 @@ def gerar_conteudo_publicacao(num_ato, ano_ato, texto, dirigente_responsavel, se
 
     # mostrando texto do ato abaixo do formulário
     texto_print = f"""{_numero_ato_} - {texto_gravar}"""
-    texto_publ = {'Texto_para_Publicação': texto_print}
+    texto_publ = {'Texto_para_Publicação': tratar_elementos_ligacao_txt(texto_print)}
     st.write(texto_publ)
-    ato_gravacao = {'data_emissao': data_atual,
+    ato_gravacao = {
+                    'data_emissao': data_atual,
                     'num_formatado': _numero_ato_,
                     'texto_do_ato_gravar': texto_gravar,
                     'dirigente_responsavel': dirigente_responsavel,
-                    'setor_responsavel': setor_responsavel}
+                    'setor_responsavel': setor_responsavel
+    }
     return ato_gravacao
 
-def gerar_word_publicacao(word_dict):# , preambulo_doc
+def gerar_word_publicacao(word_dict):
+
     # Criando documento
     documento = Document()
-
     # core_properties = documento.core_properties / core_properties.language = "pt-BR" -> não funciona para alterar o idioma e corrigir a verificação ortográfica
     # Copiei a solução do github (link abaixo)
     # https://github.com/python-openxml/python-docx/issues/727  
@@ -134,8 +147,7 @@ def gerar_word_publicacao(word_dict):# , preambulo_doc
         # quebra de página para não acumular tudo em um documento só
         if (posicao+1) == 6 or (posicao+1) == 12:
             documento.add_page_break()
-
-    
+  
     # Assinatura
     assinatura = '\n{0}'.format(assinatura.replace('<br>', '\n'))
     paragrafo = documento.add_paragraph(assinatura)
@@ -166,8 +178,8 @@ def btn_gerar_publicacao(dicionario_publicacao):
 
 
 def gerar_documento_publicacao():
-    st.markdown("<br><h6 style='padding: 5px ;text-align: center; border-style: solid; border-color: brown; border-width: 0.5px;'>Gerar documento para publicação</h6>", unsafe_allow_html=True)
 
+    st.markdown("<br><h6 style='padding: 5px ;text-align: center; border-style: solid; border-color: brown; border-width: 0.5px;'>Gerar documento para publicação</h6>", unsafe_allow_html=True)
     # criando bando de dados, tabela, inserção e busca
     data_publicacao = st.date_input('Informe a data de emissão do ato: ')
     conectar = criar_conexao('atosgerados_db')
@@ -189,7 +201,8 @@ def gerar_documento_publicacao():
                     if dicionario_publicacao.empty:
                         st.info("Nenhum Ato encontrado para o dirigente selecionado.")
                     else:
-                        st.table(dicionario_publicacao.sort_values(by='NUMERO')) # Mostrando dados após filtros
+                         # Mostrando dados após filtros
+                        st.table(dicionario_publicacao.sort_values(by='NUMERO'))
                         btn_gerar_publicacao(dicionario_publicacao)
             elif setor == 'DGP/DAP':
                 dicionario_publicacao = dicionario_publicacao.query('SETOR=="{0}"'.format(setor))
@@ -201,7 +214,7 @@ def gerar_documento_publicacao():
                     if dicionario_publicacao.empty:
                         st.info("Nenhum Ato encontrado para o dirigente selecionado.")
                     else:
-                        st.table(dicionario_publicacao.sort_values(by='NUMERO')) # Mostrando dados após filtros
+                        st.table(dicionario_publicacao.sort_values(by='NUMERO'))
                         btn_gerar_publicacao(dicionario_publicacao)
             elif setor == 'REITORIA': 
                 dicionario_publicacao = dicionario_publicacao.query('SETOR=="{0}"'.format(setor))
@@ -213,11 +226,13 @@ def gerar_documento_publicacao():
                     if dicionario_publicacao.empty:
                         st.info("Nenhum Ato encontrado para o dirigente selecionado.")
                     else:
-                        st.table(dicionario_publicacao.sort_values(by='NUMERO')) # Mostrando dados após filtros
+                        st.table(dicionario_publicacao.sort_values(by='NUMERO'))
                         btn_gerar_publicacao(dicionario_publicacao)
             else:
                 dirigente = st.selectbox("Selecione o Dirigente Responsável pela emissão do ato:",["Escolha o setor responsável."], disabled=True)
                 # Mostrando todos os dados     
                 st.table(dicionario_publicacao.sort_values(by='NUMERO'))
         
+
+
 

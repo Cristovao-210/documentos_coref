@@ -12,7 +12,7 @@ lista_de_setores = ["", "DGP", "DGP/DAP", "REITORIA"] # FORMULÁRIO
 lista_finalidades_do_ato = ["", "Manutenção de Funções"]
 
 lista_de_nome_funcoes = ["",
-                         "Chefe", "Coordenador", "Coordenadora",
+                         "Chefe", "Subchefe", "Coordenador", "Coordenadora",
                          "Coordenadora de Pós-graduação", "Coordenador de Pós-graduação",
                          "Coordenadora de Graduação", "Coordenador de Graduação",
                          "Diretora", "Diretor", "Vice-diretora", "Vice-diretor",
@@ -20,7 +20,7 @@ lista_de_nome_funcoes = ["",
                          "Outros (Usar campo 'Descrição da Função')"]
 
 lista_de_nome_funcoes_generos = ["",
-                         "o Chefe", "a Chefe", "o Coordenador", "a Coordenadora",
+                         "o Chefe", "a Chefe", "o Subchefe", "a Subchefe", "o Coordenador", "a Coordenadora",
                          "a Coordenadora de Pós-graduação", "o Coordenador de Pós-graduação",
                          "a Coordenadora de Graduação", "o Coordenador de Graduação",
                          "a Diretora", "o Diretor", "a Vice-diretora", "o Vice-diretor",
@@ -77,6 +77,3 @@ lista_meses_ano = {1:'janeiro',
 
 lista_dias_mes = [dia for dia in range(1,32)]
 lista_de_anos = [dia for dia in range(2022, (ano_atual + 1))]
-
-
-#print(dict_de_tipos_funcoes.get('cds')[1])

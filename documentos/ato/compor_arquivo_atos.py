@@ -67,7 +67,7 @@ preambulo = {
         'txt_dgp_substituto': '''A DECANA DE GESTÃO DE PESSOAS EM EXERCÍCIO DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais,
                     conferidas pelo ato da Reitoria nº 514, publicado no Diário Oficial da União nº 81, de 28 de abril de 2017, seção 2,
                     página 31 e de acordo com a competência que lhe foi delegada por meio do Ato nº 1593, de 03 de abril de 2017,
-                    publicado dia 05 de abril de 2017, no DOU, Seção 1, página 13, e à vista do constante no Processo Eletrônico nº {0}''',
+                    publicado dia 05 de abril de 2017, no DOU, Seção 1, página 13, e à vista do constante no Processo Eletrônico nº {0},''',
         'txt_dgp_dap': '''O DIRETOR DE ADMINISTRAÇÃO DE PESSOAS DO DECANATO DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA,
                        no uso de suas atribuições legais e de acordo com a competência que lhe foi delegada
                        por meio do Ato do Decanato de Gestão de Pessoas n. 1.593, de 03 de abril de 2017,

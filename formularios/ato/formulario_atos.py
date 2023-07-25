@@ -101,7 +101,7 @@ def formulario_gerar_ato(dados_do_formulario):
             # grando texto do ato no banco de dados / salvando as informações do ato no BD. / criando bando de dados, tabela e inserção   
             dados_publicacao = gerar_conteudo_publicacao(dados_do_formulario['numero_ato'],
                                                           dados_do_formulario['ano_do_ato'],
-                                                          texto_do_ato(dados_do_formulario),
+                                                          tratar_elementos_ligacao_txt(texto_do_ato(dados_do_formulario)),
                                                           dados_do_formulario['dirigente_responsavel'],
                                                           setor_responsavel)
             st.write(modelo_ato_em_branco)
