@@ -91,9 +91,10 @@ def gerar_word_publicacao(word_dict):
             rpr.append(lang)  
 
     # criando cabeçalho do documento
-    dia_do_mes = data_atual.day
-    nome_do_mes = lista_meses_ano.get(data_atual.month)
-    ano_data = data_atual.year
+    data_hoje = datetime.date.today()
+    dia_do_mes = data_hoje.day
+    nome_do_mes = lista_meses_ano.get(data_hoje.month)
+    ano_data = data_hoje.year
     setor = word_dict['SETOR'][0]
 
     # configurando texto do título do documento
