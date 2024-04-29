@@ -64,10 +64,11 @@ preambulo = {
                     e de acordo com a competência que lhe foi delegada por meio do Ato da Reitoria n. 304,
                     de 23 de março de 2017, publicado no DOU n. 58, de 24 de março de 2017 
                     e à vista do constante no Processo Eletrônico nº {0},''',
-        'txt_dgp_substituto': '''A DECANA DE GESTÃO DE PESSOAS EM EXERCÍCIO DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais,
-                    conferidas pelo ato da Reitoria nº 514, publicado no Diário Oficial da União nº 81, de 28 de abril de 2017, seção 2,
-                    página 31 e de acordo com a competência que lhe foi delegada por meio do Ato nº 1593, de 03 de abril de 2017,
-                    publicado dia 05 de abril de 2017, no DOU, Seção 1, página 13, e à vista do constante no Processo Eletrônico nº {0},''',
+        'txt_dgp_substituto': '''A DECANA DE GESTÃO DE PESSOAS EM EXERCÍCIO DA UNIVERSIDADE DE BRASÍLIA, 
+                                 no uso de suas atribuições legais, conferidas pelo Ato da Reitoria nº 89 
+                                 publicado no DOU nº 16, de 25 janeiro de 2021, seção 2, página 30 e de acordo 
+                                 com a competência que lhe foi delegada por meio do Ato da Reitoria n. 304, de 23 de março de 2017, 
+                                 publicado no DOU n. 58, de 24 de março de 2017 e à vista do constante no Processo Eletrônico nº {0},''',
         'txt_dgp_dap': '''O DIRETOR DE ADMINISTRAÇÃO DE PESSOAS DO DECANATO DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA,
                        no uso de suas atribuições legais e de acordo com a competência que lhe foi delegada
                        por meio do Ato do Decanato de Gestão de Pessoas n. 1.593, de 03 de abril de 2017,
@@ -86,7 +87,7 @@ preambulo_word = {
 
     'funcao':{
         'txt_dgp': '''A DECANA DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais, conferidas pelo Ato da Reitoria nº .72, publicado no DOU n. 13, de 20 de janeiro de 2021, seção 2, página 24, e de acordo com a competência que lhe foi delegada por meio do Ato da Reitoria n. 304, de 23 de março de 2017, publicado no DOU n. 58, de 24 de março de 2017, RESOLVE:''',
-        'txt_dgp_substituto': '''A DECANA DE GESTÃO DE PESSOAS EM EXERCÍCIO DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais, conferidas pelo ato da Reitoria nº 514, publicado no Diário Oficial da União nº 81, de 28 de abril de 2017, seção 2, página 31 e de acordo com a competência que lhe foi delegada por meio do Ato nº 1593, de 03 de abril de 2017, publicado dia 05 de abril de 2017, no DOU, Seção 1, página 13, RESOLVE:''',
+        'txt_dgp_substituto': '''A DECANA DE GESTÃO DE PESSOAS EM EXERCÍCIO DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais, conferidas pelo Ato da Reitoria nº 89 publicado no DOU nº 16, de 25 janeiro de 2021, seção 2, página 30 e de acordo com a competência que lhe foi delegada por meio do Ato da Reitoria n. 304, de 23 de março de 2017, publicado no DOU n. 58, de 24 de março de 2017, RESOLVE:''',
         'txt_dgp_dap': '''O DIRETOR DE ADMINISTRAÇÃO DE PESSOAS DO DECANATO DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais e de acordo com a competência que lhe foi delegada por meio do Ato do Decanato de Gestão de Pessoas n. 1.593, de 03 de abril de 2017, publicado no DOU n. 66, de 05 de abril de 2017, RESOLVE:''',
         'txt_dgp_dap_susbstituto': '''O(A) DIRETOR(A) DE ADMINISTRAÇÃO DE PESSOAS SUSTITUTO(A) DO DECANATO DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais e de acordo com a competência que lhe foi delegada por meio do Ato do Decanato de Gestão de Pessoas n. 1.593, de 03 de abril de 2017, publicado no DOU n. 66, de 05 de abril de 2017, RESOLVE:''',               
         'txt_reitoria': 'A REITORA DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições, RESOLVE:',
