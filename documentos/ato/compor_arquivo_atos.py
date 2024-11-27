@@ -58,11 +58,9 @@ preambulo = {
     'funcao':{
         'html': '''
             <p style="font-size:12pt;font-family:Calibri;text-indent:25mm;text-align:justify;word-wrap:normal;margin:6pt;">{0}</p> ''',
-        'txt_dgp': '''A DECANA DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA, 
-                        no uso de suas atribuições legais, conferidas pelo Ato da Reitoria nº 72, 
-                        publicado no DOU nº 13, de 20 de janeiro de 2021, seção 2, página 24, 
-                        e de acordo com a competência que lhe foi delegada por meio do Ato da Reitoria nº 304, 
-                        de 23 de março de 2017, publicado no DOU nº 58, de 24 de março de 2017 e à vista do constante no Processo Eletrônico nº {0},''',
+        'txt_dgp': '''O DECANO DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais, conferidas pelo Ato da Reitoria nº 1.527, 
+                      publicado no DOU nº 227, de 26 de novembro de 2024, seção 2, página 29, e de acordo com a competência que lhe foi delegada por meio do 
+                      Ato da Reitoria nº 304, de 23 de março de 2017, publicado no DOU nº 58, de 24 de março de 2017 e à vista do constante no Processo Eletrônico nº {0},''',
         'txt_dgp_substituto': '''A DECANA DE GESTÃO DE PESSOAS EM EXERCÍCIO DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais, conferidas pelo
                                 Ato da Reitoria nº 89 publicado no DOU nº 16, de 25 janeiro de 2021, seção 2, página 30 e de acordo com a competência que lhe 
                                 foi delegada por meio do Ato da Reitoria nº 304, de 23 de março de 2017, publicado no DOU nº 58, de 24 de março de 2017 
@@ -84,7 +82,7 @@ preambulo = {
 preambulo_word = {     
 
     'funcao':{
-        'txt_dgp': '''A DECANA DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais, conferidas pelo Ato da Reitoria nº .72, publicado no DOU n. 13, de 20 de janeiro de 2021, seção 2, página 24, e de acordo com a competência que lhe foi delegada por meio do Ato da Reitoria n. 304, de 23 de março de 2017, publicado no DOU n. 58, de 24 de março de 2017, RESOLVE:''',
+        'txt_dgp': ''''O DECANO DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais, conferidas pelo Ato da Reitoria nº 1.527, publicado no DOU nº 227, de 26 de novembro de 2024, seção 2, página 29, e de acordo com a competência que lhe foi delegada por meio do Ato da Reitoria nº 304, de 23 de março de 2017, publicado no DOU nº 58, de 24 de março de 2017, RESOLVE:''',
         'txt_dgp_substituto': '''A DECANA DE GESTÃO DE PESSOAS EM EXERCÍCIO DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais, conferidas pelo Ato da Reitoria nº 89 publicado no DOU nº 16, de 25 janeiro de 2021, seção 2, página 30 e de acordo com a competência que lhe foi delegada por meio do Ato da Reitoria n. 304, de 23 de março de 2017, publicado no DOU n. 58, de 24 de março de 2017, RESOLVE:''',
         'txt_dgp_dap': '''O DIRETOR DE ADMINISTRAÇÃO DE PESSOAS DO DECANATO DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais e de acordo com a competência que lhe foi delegada por meio do Ato do Decanato de Gestão de Pessoas n. 1.593, de 03 de abril de 2017, publicado no DOU n. 66, de 05 de abril de 2017, RESOLVE:''',
         'txt_dgp_dap_susbstituto': '''O(A) DIRETOR(A) DE ADMINISTRAÇÃO DE PESSOAS SUSTITUTO(A) DO DECANATO DE GESTÃO DE PESSOAS DA UNIVERSIDADE DE BRASÍLIA, no uso de suas atribuições legais e de acordo com a competência que lhe foi delegada por meio do Ato do Decanato de Gestão de Pessoas n. 1.593, de 03 de abril de 2017, publicado no DOU n. 66, de 05 de abril de 2017, RESOLVE:''',               
@@ -134,8 +132,8 @@ dirigentes = {
               'html':'<p style="font-size:12pt;font-family:Calibri;text-align:center;word-wrap:normal;margin:6pt;">{0}</p>',
               'dgp':
               {'decanato': 
-               {'titular': "Maria do Socorro Mendes Gomes<br>Decana de Gestão de Pessoas", 
-                'em_exercicio': "Sheila Perla Maria de Andrade da Silva<br>Decana de Gestão de Pessoas em exercício"
+               {'titular': "Peterson Góes Silva<br>Decano de Gestão de Pessoas", 
+                'em_exercicio': "nome do substituto<br>Decano(a)de Gestão de Pessoas em exercício"
                 },
                 'dap': 
                 {'titular':'Willian Aparecido Rodrigues Soares<br>Diretor de Administração de Pessoas',
@@ -144,8 +142,8 @@ dirigentes = {
               },
               'reitoria':
               {
-                'titular': 'Prof ª Márcia Abrahão Moura<br>Reitora',
-                'em_exercicio': 'Prof. Enrique Huelva Unternbäumen<br>Vice-Reitor, no exercício da Reitoria'
+                'titular': 'Profª Rozana Reigota Naves<br>Reitora',
+                'em_exercicio': 'Prof. Márcio Muniz de Farias<br>Vice-Reitor, no exercício da Reitoria'
               }
 
 }
